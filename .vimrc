@@ -50,18 +50,23 @@ set splitright
 " easier to create new code block
 
 nnoremap <C-s> o<Esc>o<Esc>ki
-nnoremap <C-q> O<Esc>jO<Esc>i
 inoremap <C-s> <Esc>o<Esc>o<Esc>ki
-inoremap <C-q> <Esc>O<Esc>jO<Esc>i
 
 " add line without going into edit mode
 
-" nnoremap <Bslash> O<Esc>
-" nnoremap <Enter> o<Esc>
+nnoremap <Bslash> O<Esc>
+nnoremap <Enter> o<Esc>
 
 " remaps control z to zz = center cursor ( i rairly ever use it )
 
 nnoremap <C-z> zz
+
+" use tab for nice looking tabular
+" nnoremap <Tab> :Tabularize /[,=]<Cr>
+nnoremap <Tab> :Tabularize /[,=]<Cr>
+
+" show nerdtree panel
+nnoremap <C-A> :NERDTree<Cr>
 
 " map this to something actually useful
 
@@ -113,7 +118,7 @@ call plug#end()
 
 set termguicolors
 
-let g:tokyonight_style         = 'night' " available: night, storm
+let g:tokyonight_style   = 'night' " available: night , storm
 let g:tokyonight_enable_italic = 1
 
 colorscheme tokyonight
