@@ -6,6 +6,9 @@ set nocompatible
 " syntax highlighting
 syntax enable
 
+" set tabs to space
+set tabstop=4 shiftwidth=4 expandtab
+
 " idk what this does
 filetype plugin indent on
 
@@ -54,7 +57,7 @@ inoremap <C-s> <Esc>o<Esc>o<Esc>ki
 
 " add line without going into edit mode
 
-nnoremap <Bslash> O<Esc>
+nnoremap <BS> O<Esc>
 nnoremap <Enter> o<Esc>
 
 " remaps control z to zz = center cursor ( i rairly ever use it )
