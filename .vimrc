@@ -120,6 +120,9 @@ Plug 'godlygeek/tabular'
 " plugin for rust
 Plug 'rust-lang/rust.vim'
 
+" langauge server
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 set termguicolors
