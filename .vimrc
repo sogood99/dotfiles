@@ -117,6 +117,9 @@ Plug 'preservim/nerdtree'
 " plugin for better tabs
 Plug 'godlygeek/tabular'
 
+" plugin for rust
+Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 set termguicolors

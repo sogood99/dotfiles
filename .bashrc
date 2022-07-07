@@ -125,3 +125,4 @@ set -o vi
 
 # disable <C-s>
 stty -ixon
+. "$HOME/.cargo/env"
