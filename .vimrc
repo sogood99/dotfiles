@@ -124,6 +124,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " for tmux stuff
 Plug 'christoomey/vim-tmux-navigator'
 
+" for fuzzy searching
+Plug 'ctrlpvim/ctrlp.vim'
+
 call plug#end()
 
 set termguicolors
@@ -157,4 +160,7 @@ nmap <silent> gr <Plug>(coc-references)
 " nerdtree remap
 map <C-g> :NERDTreeToggle<CR>
 
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden = 1
+
+" ctrlp settings
+let g:ctrlp_show_hidden = 1
