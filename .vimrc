@@ -1,4 +1,4 @@
-syntax on
+"syntax on
 set relativenumber
 
 set nocompatible
@@ -25,6 +25,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <F5> <C-W><
+nnoremap <F6> <C-W>+
+nnoremap <F7> <C-W>-
+nnoremap <F8> <C-W>>
 
 " remap navigation in terminal
 
@@ -32,6 +36,10 @@ tnoremap <C-J> <C-W><C-J>
 tnoremap <C-K> <C-W><C-K>
 tnoremap <C-L> <C-W><C-L>
 tnoremap <C-H> <C-W><C-H>
+tnoremap <F5> <C-W><
+tnoremap <F6> <C-W>+
+tnoremap <F7> <C-W>-
+tnoremap <F8> <C-W>>
 
 " make navigating easier
 
@@ -46,6 +54,9 @@ tnoremap <C-W><C-J> <C-W><S-J>
 tnoremap <C-W><C-K> <C-W><S-K>
 tnoremap <C-W><C-H> <C-W><S-H>
 tnoremap <C-W><C-L> <C-W><S-L>
+
+" create terminal tab
+nnoremap <C-A> <Esc>:term<Cr>
 
 set splitbelow
 set splitright
@@ -67,9 +78,6 @@ nnoremap <C-z> zz
 " use tab for nice looking tabular
 " nnoremap <Tab> :Tabularize /[,=]<Cr>
 nnoremap <Tab> :Tabularize /[,=]<Cr>
-
-" show nerdtree panel
-nnoremap <C-A> :NERDTree<Cr>
 
 " map this to something actually useful
 
