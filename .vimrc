@@ -123,6 +123,9 @@ Plug 'rust-lang/rust.vim'
 " langauge server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" for tmux stuff
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 
 set termguicolors
@@ -133,3 +136,25 @@ let g:tokyonight_enable_italic = 1
 colorscheme tokyonight
 
 let g:tex_flavor = 'latex'
+
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ 'coc-pyright', 
+  \ 'coc-clangd', 
+  \ ]
+
+" coc remaps
+inoremap <silent><expr> <c-space> coc#refresh()
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" nerdtree remap
+map <C-g> :NERDTreeToggle<CR>
