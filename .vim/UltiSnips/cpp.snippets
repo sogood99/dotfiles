@@ -1,0 +1,47 @@
+snippet init0 "Initialize For Bare Bones" b
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char* argv[]){
+	$0
+	return 0;
+}
+endsnippet
+
+snippet init1 "Initialize For Hardcore" b
+#include <bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+
+int main(int argc, char* argv[]){
+	$0
+	return 0;
+}
+endsnippet
+
+snippet initc "Initialize For C-Like" b
+#include <stdio.h>
+
+using namespace std;
+
+int main(int argc, char* argv[]){
+	$0
+	return 0;
+}
+endsnippet
+
+snippet for "For Loop" i
+for ($1; $2; $3){
+	$0
+}
+endsnippet
+
+snippet co "Cout"
+cout << $0 ;
+endsnippet
+
+snippet "( o)" "Cout cont." ri
+ << $0
+endsnippet
