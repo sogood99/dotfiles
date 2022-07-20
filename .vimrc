@@ -127,6 +127,9 @@ Plug 'christoomey/vim-tmux-navigator'
 " for fuzzy searching
 Plug 'ctrlpvim/ctrlp.vim'
 
+" commenting
+Plug 'preservim/nerdcommenter'
+
 call plug#end()
 
 set termguicolors
@@ -164,3 +167,8 @@ let NERDTreeShowHidden = 1
 
 " ctrlp settings
 let g:ctrlp_show_hidden = 1
+
+" nerdcommenter settings
+filetype plugin on
+nmap <C-_> <plug>NERDCommenterToggle
+vmap <C-_> <plug>NERDCommenterToggle
