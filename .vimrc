@@ -113,12 +113,10 @@ Plug 'vim-airline/vim-airline-themes'
 
 " plugin for directory stuff
 Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " plugin for better tabs
 Plug 'godlygeek/tabular'
-
-" plugin for rust
-Plug 'rust-lang/rust.vim'
 
 " langauge server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -158,3 +156,5 @@ nmap <silent> gr <Plug>(coc-references)
 
 " nerdtree remap
 map <C-g> :NERDTreeToggle<CR>
+
+let NERDTreeShowHidden=1
