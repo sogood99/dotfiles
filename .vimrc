@@ -234,3 +234,7 @@ let g:ctrlp_show_hidden = 1
 filetype plugin on
 nmap <C-_> <plug>NERDCommenterToggle
 vmap <C-_> <plug>NERDCommenterToggle
+
+" nerdtree git hunk settings
+let g:NERDTreeGitStatusMapNextHunk = "[g"
+let g:NERDTreeGitStatusMapPrevHunk = "]g"
