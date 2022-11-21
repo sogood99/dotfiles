@@ -1,7 +1,7 @@
+set nocompatible
+
 " syntax on
 set relativenumber
-
-set nocompatible
 
 " syntax highlighting
 syntax enable
@@ -26,6 +26,12 @@ set incsearch
 set hlsearch
 
 nnoremap <CR> :noh<CR>
+
+" behavior of comment newline
+autocmd FileType * set formatoptions-=cro
+
+" brace newline on enter (for braces and etc)
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " make navigating easier
 
