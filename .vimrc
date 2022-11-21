@@ -1,4 +1,4 @@
-"syntax on
+" syntax on
 set relativenumber
 
 set nocompatible
@@ -18,6 +18,14 @@ set showcmd
 set path+=**
 
 set wildmenu
+
+" set incremental search
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+nnoremap <CR> :noh<CR>
 
 " make navigating easier
 
@@ -113,8 +121,8 @@ inoremap <C-s> <Esc>o<Esc>o<Esc>ki
 
 " add line without going into edit mode
 
-nnoremap <BS> O<Esc>
-nnoremap <Enter> o<Esc>
+"nnoremap <BS> O<Esc>
+"nnoremap <Enter> o<Esc>
 
 " remaps control z to zz = center cursor ( i rairly ever use it )
 
@@ -177,7 +185,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " for tmux stuff
 Plug 'christoomey/vim-tmux-navigator'
 
-" for fuzzy searching
+" for fuzzy file searching
 Plug 'ctrlpvim/ctrlp.vim'
 
 " commenting
@@ -226,9 +234,11 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 map <C-g> :NERDTreeToggle<CR>
 
 let NERDTreeShowHidden = 1
+let NERDTreeMinimalUI = 1
 
 " ctrlp settings
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 
 " nerdcommenter settings
 filetype plugin on
