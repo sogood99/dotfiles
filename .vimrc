@@ -1,5 +1,8 @@
 set nocompatible
 
+" idk what this does
+filetype plugin indent on
+
 " syntax on
 set relativenumber
 
@@ -8,9 +11,6 @@ syntax enable
 
 " set tabs to space
 set tabstop=4 shiftwidth=4 expandtab
-
-" idk what this does
-filetype plugin indent on
 
 " show keystroke
 set showcmd
@@ -25,7 +25,7 @@ set smartcase
 set incsearch
 set hlsearch
 
-nnoremap <CR> :noh<CR>
+nnoremap <silent> <CR> :noh<CR>
 
 " behavior of comment newline
 autocmd FileType * set formatoptions-=cro
@@ -136,7 +136,6 @@ nnoremap <C-z> zz
 
 " use tab for nice looking tabular
 " nnoremap <Tab> :Tabularize /[,=]<Cr>
-nnoremap <Tab> :Tabularize /[,=]<Cr>
 
 " map this to something actually useful
 
@@ -225,9 +224,14 @@ let g:coc_global_extensions = [
   \ 'coc-vimtex',
   \ ]
 let g:coc_disable_startup_warning = 1
+set pumheight=20
 
 " coc remaps
-inoremap <silent><expr> <c-space> coc#refresh()
+if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+else
+    inoremap <silent><expr> <c-@> coc#refresh()
+endif
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -235,6 +239,8 @@ nmap <silent> gr <Plug>(coc-references)
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+imap <C-l> <C-y>
 
 " nerdtree remap
 map <C-g> :NERDTreeToggle<CR>
@@ -247,9 +253,10 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 
 " nerdcommenter settings
-filetype plugin on
-nmap <C-_> <plug>NERDCommenterToggle
-vmap <C-_> <plug>NERDCommenterToggle
+let NERDSpaceDelims=1
+nmap <C-_> <Plug>NERDCommenterToggle
+imap <C-_> <Plug>NERDCommenterToggle
+vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 
 " nerdtree git hunk settings
 let g:NERDTreeGitStatusMapNextHunk = "[g"
