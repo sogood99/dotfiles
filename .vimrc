@@ -243,7 +243,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 imap <C-l> <C-y>
 
 " nerdtree remap
-map <C-g> :NERDTreeToggle<CR>
+map <silent> <C-g> :NERDTreeToggle<CR>
 
 let NERDTreeShowHidden = 1
 let NERDTreeMinimalUI = 1
@@ -254,9 +254,9 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 
 " nerdcommenter settings
 let NERDSpaceDelims=1
-nmap <C-_> <Plug>NERDCommenterToggle
-imap <C-_> <Plug>NERDCommenterToggle
-vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
+nmap <silent> <C-_> <Plug>NERDCommenterToggle
+imap <silent> <C-_> <Plug>NERDCommenterToggle
+vmap <silent> <C-_> <Plug>NERDCommenterToggle<CR>gv
 
 " nerdtree git hunk settings
 let g:NERDTreeGitStatusMapNextHunk = "[g"
