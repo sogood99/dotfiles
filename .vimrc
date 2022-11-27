@@ -221,6 +221,7 @@ let g:coc_global_extensions = [
   \ 'coc-pyright', 
   \ 'coc-clangd', 
   \ 'coc-java',
+  \ 'coc-rust-analyzer',
   \ 'coc-vimtex',
   \ ]
 let g:coc_disable_startup_warning = 1
@@ -236,6 +237,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gf <Plug>(coc-fix-current)
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
