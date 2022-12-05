@@ -147,8 +147,10 @@ noremap <Up> :call DontBeStupid()<Cr>
 noremap <Down> :call DontBeStupid()<Cr>
 noremap <Left> :call DontBeStupid()<Cr>
 noremap <Right> :call DontBeStupid()<Cr>
-inoremap <Up> <Esc>"kddkPi
-inoremap <Down> <Esc>"kddpi
+" inoremap <Up> <Esc>"kddkPi
+" inoremap <Down> <Esc>"kddpi
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
@@ -171,7 +173,7 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'tpope/vim-fugitive'
 
 " plugin for latex support
-"Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 
 " plugin for cool status line
 Plug 'vim-airline/vim-airline'
@@ -242,7 +244,11 @@ nmap <silent> gf <Plug>(coc-fix-current)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" for coc finish autocomplete
 imap <C-l> <C-y>
+
+inoremap <silent><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
+inoremap <silent><expr> <C-k>   coc#float#has_scroll() ? coc#float#scroll(0) :  "\<C-k>"
 
 " nerdtree remap
 map <silent> <C-g> :NERDTreeToggle<CR>
@@ -253,6 +259,10 @@ let NERDTreeMinimalUI = 1
 " ctrlp settings
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_prompt_mappings = {
+  \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+  \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+  \ }
 
 " nerdcommenter settings
 let NERDSpaceDelims=1
