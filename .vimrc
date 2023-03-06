@@ -27,6 +27,9 @@ set hlsearch
 
 nnoremap <silent> <CR> :noh<CR>
 
+" autosave when change pane
+au BufLeave * silent! wall
+
 " behavior of comment newline
 autocmd FileType * set formatoptions-=cro
 
