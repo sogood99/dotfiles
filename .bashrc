@@ -132,16 +132,17 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/main/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-    # eval "$__conda_setup"
-# else
-    # if [ -f "/home/main/miniconda3/etc/profile.d/conda.sh" ]; then
-        # . "/home/main/miniconda3/etc/profile.d/conda.sh"
-    # else
-        # export PATH="/home/main/miniconda3/bin:$PATH"
-    # fi
-# fi
-# unset __conda_setup
+__conda_setup="$('/home/main/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/main/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/main/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/main/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 # <<< conda initialize <<<
 
+alias rm="rm -i"
