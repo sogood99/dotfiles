@@ -247,6 +247,9 @@ nmap <silent> gf <Plug>(coc-fix-current)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+let g:coc_snippet_next = '<Tab>'
+let g:coc_snippet_prev = '<S-Tab>'
+
 " for coc finish autocomplete
 imap <C-l> <C-y>
 
