@@ -1,4 +1,15 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["*"],
-  "coc.preferences.enableMessageDialog": false
+  "coc.preferences.enableMessageDialog": false,
+  "snippets.ultisnips.pythonPrompt": false,
+  "clangd.path": "/etc/profiles/per-user/mani/bin/clangd",
+  "rust-analyzer.server.path": "/etc/profiles/per-user/mani/bin/rust-analyzer",
+  "java.jdt.ls.java.home": "/nix/store/j0zwsj2wzp8n1b0db9an0w1fg19vzx6m-openjdk-19.0.2+7",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-19",
+      "path": "/nix/store/j0zwsj2wzp8n1b0db9an0w1fg19vzx6m-openjdk-19.0.2+7",
+      "default": true
+    }
+  ]
 }

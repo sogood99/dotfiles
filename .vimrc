@@ -8,7 +8,6 @@ set relativenumber
 
 " syntax highlighting
 syntax enable
-
 " set tabs to space
 set tabstop=4 shiftwidth=4 expandtab
 
@@ -279,3 +278,6 @@ vmap <silent> <C-_> <Plug>NERDCommenterToggle<CR>gv
 " nerdtree git hunk settings
 let g:NERDTreeGitStatusMapNextHunk = "[g"
 let g:NERDTreeGitStatusMapPrevHunk = "]g"
+
+" allow backspace over everything
+set backspace=indent,eol,start  " more powerful backspacing
