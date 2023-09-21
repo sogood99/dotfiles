@@ -111,13 +111,19 @@ nnoremap <C-W><C-L> <C-W><S-L>
 
 " remap navigation in terminal
 
-tnoremap <C-W><C-J> <C-W><S-J>
-tnoremap <C-W><C-K> <C-W><S-K>
-tnoremap <C-W><C-H> <C-W><S-H>
-tnoremap <C-W><C-L> <C-W><S-L>
+tnoremap <C-W><C-J> <C-\><C-n><C-W><S-J>
+tnoremap <C-W><C-K> <C-\><C-n><C-W><S-K>
+tnoremap <C-W><C-H> <C-\><C-n><C-W><S-H>
+tnoremap <C-W><C-L> <C-\><C-n><C-W><S-L>
 
 " create terminal tab
-nnoremap <C-A> <Esc>:term<Cr>
+nnoremap <C-A> <Esc>:split (:sp)<Cr>:term<Cr>
+
+" terminal mode return to normal
+tnoremap <Esc> <C-\><C-n>
+
+" remove process closed from term
+autocmd TermClose * :q
 
 set splitbelow
 set splitright
