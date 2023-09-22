@@ -93,14 +93,14 @@ nnoremap <silent> <F8> <C-W>:call MoveHorizontal(1)<CR>
 
 " remap navigation in terminal
 
-tnoremap <C-J> <C-W><C-J>
-tnoremap <C-K> <C-W><C-K>
-tnoremap <C-L> <C-W><C-L>
-tnoremap <C-H> <C-W><C-H>
-tnoremap <silent> <F5> <C-W>:call MoveHorizontal(0)<CR>
-tnoremap <silent> <F6> <C-W>:call MoveVertical(0)<CR>
-tnoremap <silent> <F7> <C-W>:call MoveVertical(1)<CR>
-tnoremap <silent> <F8> <C-W>:call MoveHorizontal(1)<CR>
+tnoremap <C-J> <C-\><C-n><C-W><C-J>
+tnoremap <C-K> <C-\><C-n><C-W><C-K>
+tnoremap <C-L> <C-\><C-n><C-W><C-L>
+tnoremap <C-H> <C-\><C-n><C-W><C-H>
+tnoremap <silent> <F5> <C-\><C-n><C-W>:call MoveHorizontal(0)<CR>
+tnoremap <silent> <F6> <C-\><C-n><C-W>:call MoveVertical(0)<CR>
+tnoremap <silent> <F7> <C-\><C-n><C-W>:call MoveVertical(1)<CR>
+tnoremap <silent> <F8> <C-\><C-n><C-W>:call MoveHorizontal(1)<CR>
 
 " make navigating easier
 
@@ -113,8 +113,8 @@ nnoremap <C-W><C-L> <C-W><S-L>
 
 tnoremap <C-W><C-J> <C-\><C-n><C-W><S-J>
 tnoremap <C-W><C-K> <C-\><C-n><C-W><S-K>
-tnoremap <C-W><C-H> <C-\><C-n><C-W><S-H>
 tnoremap <C-W><C-L> <C-\><C-n><C-W><S-L>
+tnoremap <C-W><C-H> <C-\><C-n><C-W><S-H>
 
 " create terminal tab
 nnoremap <C-A> <Esc>:split (:sp)<Cr>:term<Cr>
