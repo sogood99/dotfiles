@@ -293,3 +293,6 @@ set mouse=
 
 " coc-java use $JAVA_HOME
 call coc#config("java.jdt.ls.java.home", $JAVA_HOME)
+
+" plug airline
+let g:airline#extensions#tabline#enabled = 1
