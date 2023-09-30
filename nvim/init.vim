@@ -130,8 +130,8 @@ set splitright
 
 " easier to create new code block
 
-nnoremap <C-s> o<Esc>o<Esc>ki
-inoremap <C-s> <Esc>o<Esc>o<Esc>ki
+" nnoremap <C-s> o<Esc>o<Esc>ki
+" inoremap <C-s> <Esc>o<Esc>o<Esc>ki
 
 " add line without going into edit mode
 
@@ -209,6 +209,9 @@ Plug 'preservim/nerdcommenter'
 " git diff stuff
 Plug 'airblade/vim-gitgutter'
 
+" ultimate snippets
+Plug 'SirVer/ultisnips'
+
 call plug#end()
 
 set termguicolors
@@ -262,7 +265,7 @@ inoremap <silent><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<
 inoremap <silent><expr> <C-k>   coc#float#has_scroll() ? coc#float#scroll(0) :  "\<C-k>"
 
 " nerdtree remap
-map <silent> <C-g> :NERDTreeToggle<CR>
+map <silent> <C-g> <Esc>:NERDTreeToggle<CR>
 
 let NERDTreeShowHidden = 1
 let NERDTreeMinimalUI = 1
@@ -296,3 +299,7 @@ call coc#config("java.jdt.ls.java.home", $JAVA_HOME)
 
 " plug airline
 let g:airline#extensions#tabline#enabled = 1
+
+" ultimate snippets
+let g:UltiSnipsExpandTrigger="<C-s>"
+let g:UltiSnipsSnippetDirectories=["~/.config/nvim/UltiSnips"]
