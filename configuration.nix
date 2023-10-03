@@ -55,6 +55,8 @@
     xkbVariant = "";
   };
 
+  # xfce with i3
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -93,7 +95,10 @@
       gnome.gnome-terminal
       ranger
       gcc
+      clang_16
       clang-tools_16
+      lld_16
+      llvmPackages_16.libllvm
       sage
       haskell.compiler.ghc961
       rustup
@@ -101,6 +106,36 @@
       osu-lazer-bin
       texlive.combined.scheme-full
       jdk
+      krita
+      gimp
+      gnomeExtensions.dash-to-dock
+      gnomeExtensions.caffeine
+      libreoffice-qt
+      hunspell
+      hunspellDicts.en_US-large
+      qemu_full
+      yt-dlp
+      gnumake
+      cmake
+      pkg-config
+      SDL2
+      ruby
+      bundix
+      bundler
+      (agda.withPackages (p: with p; [
+	standard-library
+      ]))
+      emacs
+      blender
+      mesa
+      udev
+      calibre
+      ripgrep
+      unzip
+      lua-language-server
+      rnix-lsp
+      haskell-language-server
+      marksman
     ];
   };
 
@@ -111,22 +146,16 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim_configurable
+    neovim
+    tmux
     wget
     git
     (python39.withPackages (p: with p; [
       pip
       setuptools
-      regex
-      dbus-python
+      autopep8 
     ]))
-    waybar
-    dunst
-    kitty
-    zsh
-    rofi-wayland
-    swww
-    libnotify
-    font-awesome
+    xclip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -176,27 +205,19 @@
   services.xserver.xkbOptions = "caps:escape";
   console.useXkbConfig = true;
 
-  # Use hyprland
-  programs.hyprland = {
-    enable = true;
-    nvidiaPatches = true;
-    xwayland.enable = true;
-  };
-
-  hardware = {
-    opengl.enable = true;
-    nvidia.modesetting.enable = true;
-  };
-
-  # waybar experimental
-  nixpkgs.overlays = [
-    (self: super: {
-      waybar = super.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
-    })
-  ];
-
   programs.java.enable = true;
 
+  # Enable OpenTabletDriver
+  # hardware.opentabletdriver.enable = true;
+
+  services.xserver.wacom.enable = true;
+
+  hardware.opengl = {
+     enable = true;
+     extraPackages = with pkgs; [
+       libGL
+       glade
+     ];
+     setLdLibraryPath = true;
+   };
 }
