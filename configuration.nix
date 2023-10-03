@@ -42,20 +42,53 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
+  # Enable the X11 windowing system.
   # Configure keymap in X11
   services.xserver = {
+    enable = true;
     layout = "us";
     xkbVariant = "";
-  };
 
-  # xfce with i3
+    # i3
+    autorun = false;
+    displayManager.defaultSession = "none+i3";
+    desktopManager.xterm.enable = false; 
+    displayManager.lightdm.enable = true;
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu #application launcher most people use
+	rofi
+        i3status # gives you the default i3 status bar
+        i3lock #default i3 screen locker
+	polybarFull
+	brightnessctl
+     ];
+    };
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    libinput = {
+      enable = true;
+
+      touchpad = {
+      	tapping = true;
+	naturalScrolling = true;
+	scrollMethod = "twofinger";
+	disableWhileTyping = false;
+	clickMethod = "clickfinger";
+      };
+    };
+
+    videoDrivers = [ "intel" ]; 
+    deviceSection = ''
+    Option "DRI" "2"
+    Option "TearFree" "true" 
+    '';
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -77,8 +110,12 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # services.picom.enable = true;
+  # services.picom.vSync = true;
+
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mani = {
@@ -136,6 +173,7 @@
       rnix-lsp
       haskell-language-server
       marksman
+      blueman
     ];
   };
 
