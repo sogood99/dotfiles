@@ -89,7 +89,15 @@ set $term i3-sensible-terminal
 # start a terminal
 bindsym $mod+Return exec $term
 
+# open ranger
 bindsym $mod+r exec $term -e ranger
+
+# open blueman
+bindsym $mod+b exec blueman-manager
+
+# open firefox
+bindsym $mod+e exec firefox
+bindsym $mod+Shift+e exec firefox --private-window
 
 # kill focused window
 bindsym $mod+q kill
@@ -209,8 +217,6 @@ workspace $ws10 output $monitor_right
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 
 # Pressing left will shrink the window’s width.
@@ -232,7 +238,9 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # i3lock 
-bindsym $mod+shift+x exec i3lock --color 475263
+bindsym $mod+x exec i3lock --color 475263
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 exec --no-startup-id xrandr --output $monitor_left --primary --mode 1600x900 --pos 0x0 --rotate normal 
 
