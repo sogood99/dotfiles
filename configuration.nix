@@ -64,9 +64,13 @@
         dmenu #application launcher most people use
 	rofi
         i3status # gives you the default i3 status bar
+        i3blocks
         i3lock #default i3 screen locker
 	polybarFull
 	brightnessctl
+	feh
+	compton
+	lxappearance
      ];
     };
 
@@ -166,7 +170,6 @@
       blender
       mesa
       udev
-      calibre
       ripgrep
       unzip
       lua-language-server
@@ -174,6 +177,8 @@
       haskell-language-server
       marksman
       blueman
+      zathura
+      texlab
     ];
   };
 
