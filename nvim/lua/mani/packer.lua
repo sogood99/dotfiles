@@ -14,7 +14,6 @@ return require('packer').startup(function(use)
     }
 
     use 'folke/tokyonight.nvim'
-
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
     use('nvim-treesitter/playground')
@@ -43,4 +42,13 @@ return require('packer').startup(function(use)
     }
 
     use('vim-airline/vim-airline')
+
+    use({
+        'lervag/vimtex',
+        config = function()
+            vim.cmd([[
+                let g:vimtex_view_method = 'zathura'
+            ]])
+        end
+    })
 end)

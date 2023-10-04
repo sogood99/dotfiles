@@ -50,6 +50,7 @@ lsp_zero.format_on_save({
         ['rust_analyzer'] = { 'rust' },
         ['lua_ls'] = { 'lua' },
         ['clangd'] = { 'c', 'cpp' },
+        ['texlab'] = { 'tex' },
     }
 })
 
@@ -57,3 +58,4 @@ lspconfig.clangd.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.lua_ls.setup({})
 lspconfig.marksman.setup({})
+lspconfig.texlab.setup({})

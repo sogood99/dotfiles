@@ -83,8 +83,13 @@ bar {
 assign [class="Spotify"] $ws5
 assign [class="discord"] $ws4
 
+# set default terminal
+set $term i3-sensible-terminal
+
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec $term
+
+bindsym $mod+r exec $term -e ranger
 
 # kill focused window
 bindsym $mod+q kill
@@ -217,8 +222,6 @@ bindsym $mod+u resize grow height 10 px or 10 ppt
 bindsym $mod+i resize shrink height 10 px or 10 ppt
 bindsym $mod+o resize grow width 10 px or 10 ppt
 
-bindsym $mod+r mode "resize"
-
 # Media volume controls
 bindsym XF86AudioMute exec amixer sset 'Master' toggle
 bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
@@ -233,16 +236,16 @@ bindsym $mod+shift+x exec i3lock --color 475263
 
 exec --no-startup-id xrandr --output $monitor_left --primary --mode 1600x900 --pos 0x0 --rotate normal 
 
-bindsym $mod+m exec xrandr --output eDP1 --primary --mode '1600x900' --pos '0x0' --rotate normal; feh --bg-scale ~/Pictures/Wallpaper.jpg
+bindsym $mod+m exec "xrandr --output 'eDP1' --primary --mode '1600x900' --pos '0x0' --rotate normal; feh --bg-scale ~/Pictures/Wallpaper.jpg"
 
-bindsym $mod+n exec xrandr --output 'eDP1' --primary --mode 1600x900 --pos 0x0 --rotate normal --output DP1 --off --output DP2 --off --output DP3 --mode 1920x1080 --pos 1600x0 --rotate normal --output VIRTUAL1 --off;feh --bg-scale ~/Pictures/Wallpaper.jpg
+bindsym $mod+n exec "xrandr --output 'eDP1' --primary --mode 1600x900 --pos 0x0 --rotate normal --output DP1 --off --output DP2 --off --output DP3 --mode 1920x1080 --pos 1600x0 --rotate normal --output VIRTUAL1 --off; feh --bg-scale '~/Pictures/Wallpaper.jpg'"
 
-exec_always feh --bg-scale ~/Pictures/Wallpaper.jpg
+exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpaper.jpg
 
-exec_always compton
+exec_always --no-startup-id compton
 
-exec --no-startup-id i3-msg '1; exec i3-sensible-terminal'
-exec --no-startup-id i3-msg '2; exec firefox'
+exec --no-startup-id i3-msg 'workspace 1; exec i3-sensible-terminal'
+exec --no-startup-id i3-msg 'workspace 2; exec firefox'
 exec --no-startup-id spotify
 exec --no-startup-id discord
 

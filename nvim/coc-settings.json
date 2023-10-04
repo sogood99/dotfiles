@@ -1,7 +1,0 @@
-{
-  "coc.preferences.formatOnSaveFiletypes": ["*"],
-  "coc.preferences.enableMessageDialog": false,
-  "snippets.ultisnips.pythonPrompt": false,
-  "clangd.path": "/etc/profiles/per-user/mani/bin/clangd",
-  "rust-analyzer.server.path": "/etc/profiles/per-user/mani/bin/rust-analyzer"
-}

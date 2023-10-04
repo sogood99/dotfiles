@@ -148,10 +148,20 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mani/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  vimtex = {
+    config = { "\27LJ\2\ne\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0F                let g:vimtex_view_method = 'zathura'\n            \bcmd\bvim\0" },
+    loaded = true,
+    path = "/home/mani/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: vimtex
+time([[Config for vimtex]], true)
+try_loadstring("\27LJ\2\ne\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0F                let g:vimtex_view_method = 'zathura'\n            \bcmd\bvim\0", "config", "vimtex")
+time([[Config for vimtex]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
