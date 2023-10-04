@@ -6,6 +6,10 @@ local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
+    preselect = 'item',
+    completion = {
+        completeopt = 'menu,menuone,noinsert'
+    },
     mapping = cmp.mapping.preset.insert({
         -- `Enter` key to confirm completion
         ['<C-l>'] = cmp.mapping.confirm({ select = true }),
@@ -20,6 +24,10 @@ cmp.setup({
         -- Scroll up and down in the completion documentation
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
+
+        -- supertab
+        ['<Tab>'] = cmp_action.luasnip_jump_forward(),
+        ['<S-Tab>'] = cmp_action.luasnip_jump_backward()
     })
 })
 

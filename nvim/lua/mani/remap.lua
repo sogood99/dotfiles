@@ -1,11 +1,11 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<C-g>", vim.cmd.Ex)
 
--- remap navigation in terminal
-vim.keymap.set({ "t", "n" }, "<C-H>", "<C-W><C-H>")
-vim.keymap.set({ "t", "n" }, "<C-J>", "<C-W><C-J>")
-vim.keymap.set({ "t", "n" }, "<C-K>", "<C-W><C-K>")
-vim.keymap.set({ "t", "n" }, "<C-L>", "<C-W><C-L>")
+-- remap navigation in normal mode
+vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
+vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
+vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
+vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
 
 -- move panel
 vim.keymap.set("n", "<C-W><C-H>", "<C-W><S-H>")
@@ -13,11 +13,17 @@ vim.keymap.set("n", "<C-W><C-J>", "<C-W><S-J>")
 vim.keymap.set("n", "<C-W><C-K>", "<C-W><S-K>")
 vim.keymap.set("n", "<C-W><C-L>", "<C-W><S-L>")
 
--- stop highlight
-vim.keymap.set("n", "<CR>", ":noh<CR>", { silent = true })
-
 -- terminal mode use ESC to return to normal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
+-- move panel in terminal mode
+vim.keymap.set({ "t", "i" }, "<C-H>", "<C-\\><C-n><C-W><C-H>")
+vim.keymap.set({ "t", "i" }, "<C-J>", "<C-\\><C-n><C-W><C-J>")
+vim.keymap.set({ "t", "i" }, "<C-K>", "<C-\\><C-n><C-W><C-K>")
+vim.keymap.set({ "t", "i" }, "<C-L>", "<C-\\><C-n><C-W><C-L>")
+
+-- stop highlight
+vim.keymap.set("n", "<CR>", ":noh<CR>", { silent = true })
 
 -- move in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
