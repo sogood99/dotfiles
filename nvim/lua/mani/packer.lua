@@ -7,23 +7,29 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- telescope
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.3',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
+    -- nvim theme
     use 'folke/tokyonight.nvim'
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
 
+    -- based swapping
     use('ThePrimeagen/harpoon')
 
+    -- undotree
     use('mbbill/undotree')
 
+    -- git
     use('tpope/vim-fugitive')
 
+    -- lsp server
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
@@ -41,9 +47,16 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- status bar
     use('vim-airline/vim-airline')
 
+    -- latex
     use({ 'lervag/vimtex' })
 
-    use({ "SirVer/ultisnips" })
+    --- snippet for lsp
+    use({ 'SirVer/ultisnips' })
+    use({ 'quangnguyen30192/cmp-nvim-ultisnips' })
+
+    -- add comment support
+    use({ 'numToStr/Comment.nvim' })
 end)

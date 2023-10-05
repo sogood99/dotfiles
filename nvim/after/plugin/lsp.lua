@@ -29,6 +29,15 @@ cmp.setup({
         -- supertab
         ['<Tab>'] = cmp_action.luasnip_jump_forward(),
         ['<S-Tab>'] = cmp_action.luasnip_jump_backward()
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'vsnip' },     -- For vsnip users.
+        -- { name = 'luasnip' },   -- For luasnip users.
+        { name = 'ultisnips' }, -- For ultisnips users.
+        -- { name = 'snippy' },     -- For snippy users.
+    }, {
+        { name = 'buffer' },
     })
 })
 
