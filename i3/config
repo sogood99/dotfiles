@@ -234,8 +234,10 @@ bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
 bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
 
 # Brightness control
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+# bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+# bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id python ~/.config/i3/scripts/brightness.py add
+bindsym XF86MonBrightnessDown exec --no-startup-id python ~/.config/i3/scripts/brightness.py sub
 
 # i3lock 
 bindsym $mod+x exec i3lock --color 475263
