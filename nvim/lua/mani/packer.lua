@@ -43,12 +43,7 @@ return require('packer').startup(function(use)
 
     use('vim-airline/vim-airline')
 
-    use({
-        'lervag/vimtex',
-        config = function()
-            vim.cmd([[
-                let g:vimtex_view_method = 'zathura'
-            ]])
-        end
-    })
+    use({ 'lervag/vimtex' })
+
+    use({ "SirVer/ultisnips" })
 end)

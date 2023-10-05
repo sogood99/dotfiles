@@ -12,7 +12,8 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         -- `Enter` key to confirm completion
-        ['<C-l>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-l>'] = cmp.mapping.confirm({ select = true,
+            behavior = cmp.ConfirmBehavior.Replace }),
 
         -- Ctrl+Space to trigger completion menu
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -58,7 +59,8 @@ lsp_zero.format_on_save({
         ['rust_analyzer'] = { 'rust' },
         ['lua_ls'] = { 'lua' },
         ['clangd'] = { 'c', 'cpp' },
-        ['texlab'] = { 'tex' },
+        -- ['texlab'] = { 'tex' },
+        ['jdtls'] = { 'java' },
     }
 })
 
@@ -67,3 +69,6 @@ lspconfig.rust_analyzer.setup({})
 lspconfig.lua_ls.setup({})
 lspconfig.marksman.setup({})
 lspconfig.texlab.setup({})
+lspconfig.jdtls.setup {
+    cmd = { 'jdt-language-server', "-configuration", "~/.cache/jdtls/config", "-data", "~/.cache/jdtls/workspace" },
+}
