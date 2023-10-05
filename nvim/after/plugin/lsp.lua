@@ -70,6 +70,7 @@ lsp_zero.format_on_save({
         ['clangd'] = { 'c', 'cpp' },
         -- ['texlab'] = { 'tex' },
         ['jdtls'] = { 'java' },
+        ['efm'] = { 'python' },
     }
 })
 
@@ -81,3 +82,16 @@ lspconfig.texlab.setup({})
 lspconfig.jdtls.setup {
     cmd = { 'jdt-language-server', "-configuration", "~/.cache/jdtls/config", "-data", "~/.cache/jdtls/workspace" },
 }
+lspconfig.pyright.setup({})
+lspconfig.efm.setup({
+    init_options = { documentFormatting = true },
+    settings = {
+        rootMarkers = { ".git/" },
+        languages = {
+            python = {
+                { formatCommand = "black --quiet -", formatStdin = true }
+            }
+        }
+    },
+    filetypes = { 'python' }
+})
