@@ -12,8 +12,8 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         -- `Enter` key to confirm completion
-        ['<C-l>'] = cmp.mapping.confirm({ select = true,
-            behavior = cmp.ConfirmBehavior.Replace }),
+        ['<C-l>'] = cmp.mapping.confirm({ select = true }),
+        -- behavior = cmp.ConfirmBehavior.Replace }),
 
         -- Ctrl+Space to trigger completion menu
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -68,9 +68,8 @@ lsp_zero.format_on_save({
         ['rust_analyzer'] = { 'rust' },
         ['lua_ls'] = { 'lua' },
         ['clangd'] = { 'c', 'cpp' },
-        -- ['texlab'] = { 'tex' },
         ['jdtls'] = { 'java' },
-        ['efm'] = { 'python' },
+        ['efm'] = { 'python', 'tex' },
     }
 })
 
@@ -90,8 +89,11 @@ lspconfig.efm.setup({
         languages = {
             python = {
                 { formatCommand = "black --quiet -", formatStdin = true }
+            },
+            tex = {
+                { formatCommand = "latexindent", formatStdin = true }
             }
         }
     },
-    filetypes = { 'python' }
+    filetypes = { 'python', 'tex' }
 })

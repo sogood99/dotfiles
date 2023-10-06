@@ -70,6 +70,7 @@
 	brightnessctl
 	feh
 	compton
+	arc-theme
 	lxappearance
      ];
     };
@@ -175,10 +176,15 @@
       lua-language-server
       rnix-lsp
       haskell-language-server
+      jdt-language-server
       marksman
       blueman
       zathura
       texlab
+      efm-langserver
+      black
+      pyright
+      maim
     ];
   };
 
@@ -264,3 +270,4 @@
      setLdLibraryPath = true;
    };
 }
+

@@ -139,3 +139,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # alias for neovim
 alias nv="nvim"
+
+# update path to include cargo
+export PATH="~/.cargo/bin/:$PATH"
