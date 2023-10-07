@@ -230,14 +230,14 @@ bindsym $mod+o resize grow width 10 px or 10 ppt
 
 # Media volume controls
 bindsym XF86AudioMute exec amixer sset 'Master' toggle
-bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
-bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
-
+bindsym XF86AudioLowerVolume exec python ~/.config/i3/scripts/interface.py --interface sound --sub
+bindsym XF86AudioRaiseVolume exec python ~/.config/i3/scripts/interface.py --interface sound --add
+ 
 # Brightness control
 # bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 # bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec --no-startup-id python ~/.config/i3/scripts/brightness.py add
-bindsym XF86MonBrightnessDown exec --no-startup-id python ~/.config/i3/scripts/brightness.py sub
+bindsym XF86MonBrightnessUp exec --no-startup-id python ~/.config/i3/scripts/interface.py --interface brightness --add
+bindsym XF86MonBrightnessDown exec --no-startup-id python ~/.config/i3/scripts/interface.py --interface brightness --sub
 
 # i3lock 
 bindsym $mod+x exec i3lock --color 475263
