@@ -12,21 +12,22 @@
 #  - /path/to/alacritty.yml
 import:
  # - ~/.config/alacritty/themes/themes/tokyo-night.yaml
- - ~/.config/alacritty/themes/themes/gotham.yaml
- # - ~/.config/alacritty/themes/themes/iterm.yaml
+ # - ~/.config/alacritty/themes/themes/gotham.yaml
+ - ~/.config/alacritty/themes/themes/iterm.yaml
  # - ~/.config/alacritty/themes/themes/midnight-haze.yaml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+# env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
+  # TERM: alacritty
+  # TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -73,7 +74,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.92
+  opacity: 0.95
 
   # Startup Mode (changes require restart)
   #
@@ -914,3 +915,14 @@ font:
 
   # Highlight window damage information.
   #highlight_damage: false
+
+key_bindings:
+  - { key: J,        mods: Control|Shift, chars: "\x1b[74;6u" }
+  - { key: H,        mods: Control|Shift, chars: "\x1b[72;6u" }
+  - { key: L,        mods: Control|Shift, chars: "\x1b[76;6u" }
+  - { key: K,        mods: Control|Shift, chars: "\x1b[75;6u" }
+  - { key: N,        mods: Control|Shift, chars: "\x1b[78;6u" }
+  - { key: G,        mods: Control|Shift, chars: "\x1b[71;6u" }
+  - { key: C,        mods: Control|Shift, chars: "\x1b[67;6u" }
+  - { key: B,        mods: Control|Shift, chars: "\x1b[66;6u" }
+  # - { key: V,        mods: Control|Shift, chars: "\x1b[86;6u" }

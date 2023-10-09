@@ -85,7 +85,7 @@ assign [class="discord"] $ws4
 
 # set default terminal
 # set $term i3-sensible-terminal
-set $term alacritty
+set $term alacritty -e tmux
 
 # start a terminal
 bindsym $mod+Return exec $term
@@ -251,11 +251,13 @@ bindsym $mod+m exec --no-startup-id "xrandr --output 'eDP1' --primary --mode '16
 bindsym $mod+n exec --no-startup-id "xrandr --output 'eDP1' --primary --mode 1600x900 --pos 0x0 --rotate normal --output DP1 --off --output DP2 --off --output DP3 --mode 1920x1080 --pos 1600x0 --rotate normal --output VIRTUAL1 --off; feh --bg-scale '~/Pictures/Wallpaper.jpg'"
 
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpaper.jpg
+exec_always --no-startup-id dunst
 
 exec --no-startup-id i3-msg 'workspace 1; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace 2; exec firefox'
 exec --no-startup-id spotify
 exec --no-startup-id discord
+
 
 # screenshot
 bindsym Print exec --no-startup-id maim -s --format=png "$HOME/Pictures/Screenshots/screenshot-$(date -u +'%Y%m%d-%H%M%SZ').png"

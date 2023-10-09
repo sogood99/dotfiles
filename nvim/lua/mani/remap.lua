@@ -97,5 +97,5 @@ vim.keymap.set({ "n", "t" }, "<F6>", function() MoveVertical(0) end)
 vim.keymap.set({ "n", "t" }, "<F7>", function() MoveVertical(1) end)
 
 -- terminal mode
-vim.keymap.set("n", "<C-a>", "<C-w>s :term<CR>")
-vim.keymap.set("n", "<M-a>", "<C-w>v :term<CR>")
+-- vim.keymap.set("n", "<C-a>", "<C-w>s :term<CR>")
+-- vim.keymap.set("n", "<M-a>", "<C-w>v :term<CR>")
