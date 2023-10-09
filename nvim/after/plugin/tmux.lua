@@ -9,3 +9,6 @@ augroup navigator
   autocmd FileType netrw call s:reset_netrw_keys()
 augroup END
 ]])
+
+-- disable wrapping in tmux vim
+vim.g.tmux_navigator_no_wrap = 1
