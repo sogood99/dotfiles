@@ -59,4 +59,7 @@ return require('packer').startup(function(use)
 
     -- add comment support
     use({ 'numToStr/Comment.nvim' })
+
+    -- tmux nvim navigator
+    use({ 'christoomey/vim-tmux-navigator' })
 end)

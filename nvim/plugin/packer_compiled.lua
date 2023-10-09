@@ -164,6 +164,11 @@ _G.packer_plugins = {
     path = "/home/mani/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/home/mani/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
   vimtex = {
     loaded = true,
     path = "/home/mani/.local/share/nvim/site/pack/packer/start/vimtex",
