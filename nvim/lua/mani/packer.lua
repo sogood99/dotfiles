@@ -48,7 +48,11 @@ return require('packer').startup(function(use)
     }
 
     -- status bar
-    use('vim-airline/vim-airline')
+    -- use('vim-airline/vim-airline')
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 
     -- latex
     use({ 'lervag/vimtex' })

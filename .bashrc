@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-~/opt/neofetch-edited
+~/dotfiles/neofetch-edited --disable cpu gpu packages model memory
 
 # If not running interactively, don't do anything
 case $- in

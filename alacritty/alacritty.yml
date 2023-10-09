@@ -130,8 +130,8 @@ window:
 # Font configuration
 font:
   # Normal (roman) font face
-  #normal:
-    # Font family
+  # normal:
+  #       family: SauceCodePro Nerd Font Mono
     #
     # Default:
     #   - (macOS) Menlo
@@ -917,6 +917,8 @@ font:
   #highlight_damage: false
 
 key_bindings:
+  - { key: PageUp,   action: ScrollLineUp   }
+  - { key: PageDown, action: ScrollLineDown }
   - { key: J,        mods: Control|Shift, chars: "\x1b[74;6u" }
   - { key: H,        mods: Control|Shift, chars: "\x1b[72;6u" }
   - { key: L,        mods: Control|Shift, chars: "\x1b[76;6u" }
@@ -925,4 +927,5 @@ key_bindings:
   - { key: G,        mods: Control|Shift, chars: "\x1b[71;6u" }
   - { key: C,        mods: Control|Shift, chars: "\x1b[67;6u" }
   - { key: B,        mods: Control|Shift, chars: "\x1b[66;6u" }
+  # - { key: Slash,    mods: Control,       chars: "\x1f"}
   # - { key: V,        mods: Control|Shift, chars: "\x1b[86;6u" }
