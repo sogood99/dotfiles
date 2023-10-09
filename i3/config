@@ -96,6 +96,9 @@ bindsym $mod+r exec $term -e ranger
 # open blueman
 bindsym $mod+b exec blueman-manager
 
+# open pavucontrol
+bindsym $mod+p exec pavucontrol
+
 # open firefox
 bindsym $mod+e exec firefox
 bindsym $mod+Shift+e exec firefox --private-window
@@ -253,11 +256,7 @@ bindsym $mod+n exec --no-startup-id "xrandr --output 'eDP1' --primary --mode 160
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpaper.jpg
 exec_always --no-startup-id dunst
 
-exec --no-startup-id i3-msg 'workspace 1; exec alacritty -e tmux'
-exec --no-startup-id i3-msg 'workspace 2; exec firefox'
-exec --no-startup-id spotify
-exec --no-startup-id discord
-
+exec --no-startup-id i3-msg 'workspace 1; exec alacritty -e tmux; sleep 2; workspace 2; exec firefox'
 
 # screenshot
 bindsym Print exec --no-startup-id maim -s --format=png "$HOME/Pictures/Screenshots/screenshot-$(date -u +'%Y%m%d-%H%M%SZ').png"

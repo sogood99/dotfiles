@@ -146,6 +146,9 @@ export NVM_DIR="$HOME/.nvm"
 # alias for neovim
 alias nv="nvim"
 
+# alias for spotify player
+alias sp="spotify_player --theme 'new-default'"
+
 # update path to include cargo
 export PATH="~/.cargo/bin/:$PATH"
 
