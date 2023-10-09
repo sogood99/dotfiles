@@ -1,3 +1,5 @@
+local tokyonight = require("tokyonight")
+
 function ColorMyPencils(color)
     color = color or "tokyonight"
     vim.cmd.colorscheme(color)
@@ -8,4 +10,8 @@ function ColorMyPencils(color)
     vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
 end
 
+tokyonight.setup({
+    transparent = true,
+    tokyonight_dark_float = false,
+})
 ColorMyPencils()
