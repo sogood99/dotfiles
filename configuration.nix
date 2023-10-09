@@ -66,10 +66,12 @@
         i3status # gives you the default i3 status bar
         i3blocks
         i3lock #default i3 screen locker
+	dunst
+	pavucontrol
 	polybarFull
 	brightnessctl
 	feh
-	compton
+	alacritty
 	arc-theme
 	lxappearance
      ];
@@ -115,8 +117,8 @@
     #media-session.enable = true;
   };
 
-  # services.picom.enable = true;
-  # services.picom.vSync = true;
+  services.picom.enable = true;
+  services.picom.vSync = true;
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
@@ -185,6 +187,9 @@
       black
       pyright
       maim
+      slack
+      nmap
+      obs-studio
     ];
   };
 
@@ -234,8 +239,33 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 
-  # For CN and JP fonts
-  fonts.fonts = with pkgs; [noto-fonts noto-fonts-extra noto-fonts-cjk-sans noto-fonts-cjk-serif];
+# For CN and JP fonts
+  fonts.fonts = with pkgs; [
+	corefonts
+	ubuntu_font_family
+	powerline
+	powerline-fonts
+	powerline-symbols
+	font-awesome
+	source-code-pro
+	emojione
+	kanji-stroke-order-font
+	gyre-fonts
+	ipafont
+	noto-fonts
+	noto-fonts-extra
+	noto-fonts-cjk-sans
+	noto-fonts-cjk-serif
+	noto-fonts-emoji
+	liberation_ttf
+	fira-code
+	fira-code-symbols
+	mplus-outline-fonts.githubRelease
+	dina-font
+	proggyfonts
+	nerdfonts
+	terminus_font
+  ];
 
   # For CN and JP input
   i18n.inputMethod = {
@@ -270,4 +300,3 @@
      setLdLibraryPath = true;
    };
 }
-
