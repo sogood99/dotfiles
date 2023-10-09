@@ -84,7 +84,8 @@ assign [class="Spotify"] $ws5
 assign [class="discord"] $ws4
 
 # set default terminal
-set $term i3-sensible-terminal
+# set $term i3-sensible-terminal
+set $term alacritty
 
 # start a terminal
 bindsym $mod+Return exec $term
@@ -230,9 +231,8 @@ bindsym $mod+o resize grow width 10 px or 10 ppt
 
 # Media volume controls
 bindsym XF86AudioMute exec amixer sset 'Master' toggle
-bindsym XF86AudioLowerVolume exec python ~/.config/i3/scripts/interface.py --interface sound --sub
-bindsym XF86AudioRaiseVolume exec python ~/.config/i3/scripts/interface.py --interface sound --add
- 
+bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
+bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+ 
 # Brightness control
 # bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 # bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
@@ -252,12 +252,10 @@ bindsym $mod+n exec --no-startup-id "xrandr --output 'eDP1' --primary --mode 160
 
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpaper.jpg
 
-exec_always --no-startup-id compton
-
 exec --no-startup-id i3-msg 'workspace 1; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace 2; exec firefox'
 exec --no-startup-id spotify
 exec --no-startup-id discord
 
 # screenshot
-bindsym Print exec --no-startup-id maim --format=png "~/Pictures/Screenshots/screenshot-$(date -u +'%Y%m%d-%H%M%SZ').png"
+bindsym Print exec --no-startup-id maim -s --format=png "$HOME/Pictures/Screenshots/screenshot-$(date -u +'%Y%m%d-%H%M%SZ').png"

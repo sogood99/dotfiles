@@ -49,3 +49,8 @@ vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 -- split direction
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+vim.cmd("autocmd BufLeave * silent! wall")
+
+-- set title for vim
+vim.opt.title = true

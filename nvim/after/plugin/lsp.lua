@@ -10,6 +10,9 @@ cmp.setup({
     completion = {
         completeopt = 'menu,menuone,noinsert'
     },
+    sorting = {
+        priority_weight = 1
+    },
     mapping = cmp.mapping.preset.insert({
         -- `Enter` key to confirm completion
         ['<C-l>'] = cmp.mapping.confirm({ select = true }),

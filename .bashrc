@@ -37,6 +37,12 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+case ${TERM} in
+    alacritty)
+        PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
+        ;;
+esac
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
@@ -142,3 +148,7 @@ alias nv="nvim"
 
 # update path to include cargo
 export PATH="~/.cargo/bin/:$PATH"
+
+# use vim
+export VISUAL=nvim
+export EDITOR=nvim
