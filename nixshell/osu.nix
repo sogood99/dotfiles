@@ -1,7 +1,7 @@
 # default.nix
 with import <nixpkgs> {};
 stdenv.mkDerivation {
-    name = "GL-DevEnv"; 
+    name = "OSU-Dev"; 
     nativeBuildInputs = [ pkg-config ]; 
     buildInputs = [ 
         systemd

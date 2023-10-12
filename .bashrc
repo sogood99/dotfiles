@@ -155,3 +155,9 @@ export PATH="~/.cargo/bin/:$PATH"
 # use vim
 export VISUAL=nvim
 export EDITOR=nvim
+
+# hacky
+export FCITXDIR=/nix/store/nmpmcwqsrfr0npw2l1rlikwhrh2x29x5-fcitx5-with-addons-5.0.23/share/fcitx5/addon
+export FCITX_ADDON_DIRS=/nix/store/nmpmcwqsrfr0npw2l1rlikwhrh2x29x5-fcitx5-with-addons-5.0.23/share/fcitx5/addon
+
+

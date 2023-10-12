@@ -88,7 +88,7 @@ bar {
 
 # default workspaces
 assign [class="Spotify"] $ws5
-assign [class="discord"] $ws4
+assign [class="discord"] $ws5
 
 # set default terminal
 # set $term i3-sensible-terminal
@@ -98,7 +98,7 @@ set $term alacritty -e tmux
 bindsym $mod+Return exec $term
 
 # open ranger
-bindsym $mod+r exec $term -e ranger
+bindsym $mod+r exec $term new "bash -c ranger"
 
 # open blueman
 bindsym $mod+b exec blueman-manager
