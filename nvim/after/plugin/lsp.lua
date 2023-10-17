@@ -10,8 +10,9 @@ cmp.setup({
     completion = {
         completeopt = 'menu,menuone,noinsert'
     },
-    sorting = {
-        priority_weight = 1
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
         -- `Enter` key to confirm completion
@@ -39,6 +40,7 @@ cmp.setup({
         -- { name = 'luasnip' },   -- For luasnip users.
         { name = 'ultisnips' }, -- For ultisnips users.
         -- { name = 'snippy' },     -- For snippy users.
+        { name = 'nvim_lsp_signature_help' },
     }, {
         { name = 'buffer' },
     })

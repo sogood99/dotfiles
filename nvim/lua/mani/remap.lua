@@ -13,6 +13,10 @@ vim.keymap.set("n", "<C-W><C-J>", "<C-W><S-J>")
 vim.keymap.set("n", "<C-W><C-K>", "<C-W><S-K>")
 vim.keymap.set("n", "<C-W><C-L>", "<C-W><S-L>")
 
+-- map W,B to 2w,2b
+vim.keymap.set({ "n" }, "W", "2w")
+vim.keymap.set({ "n" }, "B", "2b")
+
 -- terminal mode use ESC to return to normal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
@@ -54,40 +58,40 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- add to current word
 
 local function t(str)
-    -- Adjust boolean arguments as needed
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
+	-- Adjust boolean arguments as needed
+	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 function MoveHorizontal(dir)
-    if vim.fn.winnr('l') ~= vim.fn.winnr() then
-        if dir == 0 then
-            vim.cmd.normal(t '<C-W><')
-        else
-            vim.cmd.normal(t '<C-W>>')
-        end
-    else
-        if dir == 0 then
-            vim.cmd.normal(t '<C-W>>')
-        else
-            vim.cmd.normal(t '<C-W><')
-        end
-    end
+	if vim.fn.winnr('l') ~= vim.fn.winnr() then
+		if dir == 0 then
+			vim.cmd.normal(t '<C-W><')
+		else
+			vim.cmd.normal(t '<C-W>>')
+		end
+	else
+		if dir == 0 then
+			vim.cmd.normal(t '<C-W>>')
+		else
+			vim.cmd.normal(t '<C-W><')
+		end
+	end
 end
 
 function MoveVertical(dir)
-    if (vim.fn.winnr('j') ~= vim.fn.winnr()) and (vim.fn.winnr('k') == vim.fn.winnr()) then
-        if dir == 0 then
-            vim.cmd.normal(t '<C-W>+')
-        else
-            vim.cmd.normal(t '<C-W>-')
-        end
-    else
-        if dir == 0 then
-            vim.cmd.normal(t '<C-W>-')
-        else
-            vim.cmd.normal(t '<C-W>+')
-        end
-    end
+	if (vim.fn.winnr('j') ~= vim.fn.winnr()) and (vim.fn.winnr('k') == vim.fn.winnr()) then
+		if dir == 0 then
+			vim.cmd.normal(t '<C-W>+')
+		else
+			vim.cmd.normal(t '<C-W>-')
+		end
+	else
+		if dir == 0 then
+			vim.cmd.normal(t '<C-W>-')
+		else
+			vim.cmd.normal(t '<C-W>+')
+		end
+	end
 end
 
 -- map F5-8 to move

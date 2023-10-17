@@ -66,4 +66,10 @@ return require('packer').startup(function(use)
 
     -- tmux nvim navigator
     use({ 'christoomey/vim-tmux-navigator' })
+
+    -- bracket autopair
+    use { "windwp/nvim-autopairs" }
+
+    -- lsp function signature
+    use { "hrsh7th/cmp-nvim-lsp-signature-help" }
 end)
