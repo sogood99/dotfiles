@@ -2,13 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, ... }: 
 
-{
+let 
+  unstable-pkgs = import <nixpkgs-unstable> { config = { allowUnfree = true; }; };
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -70,10 +73,19 @@
 	pavucontrol
 	polybarFull
 	brightnessctl
+	playerctl
 	feh
 	alacritty
 	arc-theme
 	lxappearance
+	arandr 
+	xdg-utils # for opening default programs when clicking links
+	glib # gsettings
+	dracula-theme # gtk theme
+	gnome3.adwaita-icon-theme  # default gnome cursors
+	viewnior 
+	gnome.nautilus
+	wacomtablet
      ];
     };
 
@@ -98,7 +110,11 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing.enable = true; 
+  services.printing.drivers = [ pkgs.brlaser ];
+  services.avahi.enable = true; # runs the Avahi daemon
+  services.avahi.nssmdns = true; # enables the mDNS NSS plug-in
+  services.avahi.openFirewall = true; # opens the firewall for UDP port 5353
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -122,6 +138,11 @@
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.settings = {
+	  General = {
+		  Enable = "Source,Sink,Media,Socket";
+	  };
+  };
   services.blueman.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -136,7 +157,7 @@
       vscodium
       discord
       spotify
-      gnome.gnome-terminal
+      unstable-pkgs.spotify-player
       ranger
       gcc
       clang_16
@@ -190,6 +211,19 @@
       slack
       nmap
       obs-studio
+      (python39.withPackages (p: with p; [
+			      pip
+			      setuptools
+			      autopep8 
+			      tkinter
+			      numpy
+			      scipy
+			      matplotlib
+      ]))
+      xclip
+      bluez
+      valgrind
+      vlc
     ];
   };
 
@@ -204,12 +238,6 @@
     tmux
     wget
     git
-    (python39.withPackages (p: with p; [
-      pip
-      setuptools
-      autopep8 
-    ]))
-    xclip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -268,14 +296,16 @@
   ];
 
   # For CN and JP input
-  i18n.inputMethod = {
-    enabled = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [
-	mozc
-	libpinyin
-        rime
-    ];
-  };
+  # i18n.inputMethod = {
+    # enabled = "ibus";
+    # ibus.engines = with pkgs.ibus-engines; [ mozc libpinyin rime ];
+    # enabled = "fcitx5";
+    # fcitx5.addons = with pkgs; [
+        # fcitx5-mozc
+        # fcitx5-chinese-addons
+        # fcitx5-gtk
+    # ];
+  # };
 
   # Sudo doesnt need password
   security.sudo.wheelNeedsPassword = false;
@@ -299,4 +329,7 @@
      ];
      setLdLibraryPath = true;
    };
+
+  programs.dconf.enable = true;
+
 }
