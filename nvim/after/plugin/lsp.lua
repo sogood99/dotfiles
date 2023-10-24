@@ -74,7 +74,7 @@ lsp_zero.format_on_save({
         ['lua_ls'] = { 'lua' },
         ['clangd'] = { 'c', 'cpp' },
         ['jdtls'] = { 'java' },
-        ['efm'] = { 'python', 'tex' },
+        ['efm'] = { 'python', 'tex', 'ocaml' },
     }
 })
 
@@ -97,8 +97,12 @@ lspconfig.efm.setup({
             },
             tex = {
                 { formatCommand = "latexindent", formatStdin = true }
-            }
+            },
+            ocaml = {
+                { formatCommand = "ocamlformat --enable-outside-detected-project --impl -", formatStdin = true }
+            },
         }
     },
-    filetypes = { 'python', 'tex' }
+    filetypes = { 'python', 'tex', 'ocaml' }
 })
+lspconfig.ocamllsp.setup {}
