@@ -55,8 +55,8 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "H", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
     vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+    vim.keymap.set("n", "[g", function() vim.diagnostic.goto_next() end, opts)
+    vim.keymap.set("n", "]g", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
@@ -83,9 +83,9 @@ lspconfig.rust_analyzer.setup({})
 lspconfig.lua_ls.setup({})
 lspconfig.marksman.setup({})
 lspconfig.texlab.setup({})
-lspconfig.jdtls.setup {
+lspconfig.jdtls.setup({
     cmd = { 'jdt-language-server', "-configuration", "~/.cache/jdtls/config", "-data", "~/.cache/jdtls/workspace" },
-}
+})
 lspconfig.pyright.setup({})
 lspconfig.efm.setup({
     init_options = { documentFormatting = true },
@@ -105,4 +105,4 @@ lspconfig.efm.setup({
     },
     filetypes = { 'python', 'tex', 'ocaml' }
 })
-lspconfig.ocamllsp.setup {}
+lspconfig.ocamllsp.setup({})

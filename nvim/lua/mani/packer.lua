@@ -17,8 +17,23 @@ return require('packer').startup(function(use)
     -- nvim theme
     use 'folke/tokyonight.nvim'
 
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use('nvim-treesitter/playground')
+    -- based treesitter
+    use({ 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } })
+    use({
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
+    use({
+        "nvim-treesitter/nvim-treesitter-refactor",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
+    use({
+        'nvim-treesitter/playground',
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter"
+    })
 
     -- based swapping
     use('ThePrimeagen/harpoon')
