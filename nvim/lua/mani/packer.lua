@@ -68,8 +68,15 @@ return require('packer').startup(function(use)
     use({ 'christoomey/vim-tmux-navigator' })
 
     -- bracket autopair
-    use { "windwp/nvim-autopairs" }
+    use({ "windwp/nvim-autopairs" })
 
     -- lsp function signature
-    use { "hrsh7th/cmp-nvim-lsp-signature-help" }
+    use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
+
+    -- netrw with icons
+    use({ 'prichrd/netrw.nvim' })
+    use({ 'nvim-tree/nvim-web-devicons' })
+
+    -- folding code
+    use({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' })
 end)
