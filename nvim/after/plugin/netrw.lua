@@ -2,6 +2,7 @@ local netrw = require 'netrw'
 
 vim.g.netrw_liststyle = 1
 vim.g.netrw_sizestyle = "h"
+vim.g.netrw_maxfilenamelen = 60
 
 netrw.setup {
     -- Put your configuration here, or leave the object empty to take the default
