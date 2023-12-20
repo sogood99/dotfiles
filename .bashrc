@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-~/dotfiles/neofetch-edited --disable cpu gpu packages model memory
+neofetch
 
 # If not running interactively, don't do anything
 case $- in
@@ -147,7 +147,10 @@ export NVM_DIR="$HOME/.nvm"
 alias nv="nvim"
 
 # alias for spotify player
-alias sp="spotify_player --theme 'new-default'"
+alias sp="~/.cargo/bin/spotify_player --theme 'new-default'"
+
+# alias for osu!
+alias osu="cd ~/opt/osu/; dotnet run --project osu.Desktop;"
 
 # update path to include cargo
 export PATH="~/.cargo/bin/:$PATH"
@@ -156,8 +159,29 @@ export PATH="~/.cargo/bin/:$PATH"
 export VISUAL=nvim
 export EDITOR=nvim
 
-# hacky
-export FCITXDIR=/nix/store/nmpmcwqsrfr0npw2l1rlikwhrh2x29x5-fcitx5-with-addons-5.0.23/share/fcitx5/addon
-export FCITX_ADDON_DIRS=/nix/store/nmpmcwqsrfr0npw2l1rlikwhrh2x29x5-fcitx5-with-addons-5.0.23/share/fcitx5/addon
+# for fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/mani/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/mani/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/mani/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/mani/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
+if [ -n "$CONDA_DEFAULT_ENV" ]; then                                                                                                                                         
+    __conda_reactivate                                                                                                                                                       
+fi
+
+# for rubygems
+export PATH="/home/mani/.local/share/gem/ruby/3.0.0/bin:$PATH"

@@ -84,7 +84,7 @@ lspconfig.lua_ls.setup({})
 lspconfig.marksman.setup({})
 lspconfig.texlab.setup({})
 lspconfig.jdtls.setup({
-    cmd = { 'jdt-language-server', "-configuration", "~/.cache/jdtls/config", "-data", "~/.cache/jdtls/workspace" },
+    -- cmd = { 'jdt-language-server', "-configuration", "~/.cache/jdtls/config", "-data", "~/.cache/jdtls/workspace" },
 })
 lspconfig.pyright.setup({})
 lspconfig.efm.setup({
