@@ -74,6 +74,7 @@ lsp_zero.format_on_save({
         ['lua_ls'] = { 'lua' },
         ['clangd'] = { 'c', 'cpp' },
         ['jdtls'] = { 'java' },
+        ['gopls'] = { 'go' },
         ['efm'] = { 'python', 'tex', 'ocaml' },
     }
 })
@@ -106,3 +107,4 @@ lspconfig.efm.setup({
     filetypes = { 'python', 'tex', 'ocaml' }
 })
 lspconfig.ocamllsp.setup({})
+lspconfig.gopls.setup({})
