@@ -46,7 +46,7 @@ cmp.setup({
             if luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
-                cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+                cmp_ultisnips_mappings.jump_backwards(fallback)
             end
         end, { "i", "s" }),
     }),
