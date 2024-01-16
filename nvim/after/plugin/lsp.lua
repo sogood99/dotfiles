@@ -5,6 +5,9 @@ local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
+local luasnip = require("luasnip")
+local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+
 cmp.setup({
     preselect = 'item',
     completion = {
@@ -31,8 +34,21 @@ cmp.setup({
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
 
         -- supertab
-        ['<Tab>'] = cmp_action.luasnip_jump_forward(),
-        ['<S-Tab>'] = cmp_action.luasnip_jump_backward()
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+            end
+        end, { "i", "s" }),
+
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+            end
+        end, { "i", "s" }),
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
