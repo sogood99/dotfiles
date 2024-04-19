@@ -96,7 +96,17 @@ lsp_zero.format_on_save({
 })
 
 lspconfig.clangd.setup({})
-lspconfig.rust_analyzer.setup({})
+lspconfig.rust_analyzer.setup({
+    settings = {
+        ["rust-analyzer"] = {
+            cargo = {
+                cfgs = {
+                    kani = ""
+                }
+            },
+        },
+    },
+})
 lspconfig.lua_ls.setup({})
 lspconfig.marksman.setup({})
 lspconfig.texlab.setup({})
