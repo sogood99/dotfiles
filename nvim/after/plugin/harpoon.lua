@@ -4,8 +4,6 @@ local ui = require('harpoon.ui')
 vim.keymap.set("n", "<M-w>", mark.add_file)
 vim.keymap.set("n", "<M-e>", ui.toggle_quick_menu)
 
-vim.keymap.set("n", "<M-1>", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<M-2>", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<M-3>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<M-4>", function() ui.nav_file(4) end)
-vim.keymap.set("n", "<M-5>", function() ui.nav_file(5) end)
+for i = 1, 10 do
+    vim.keymap.set("n", "<M-" .. i .. ">", function() ui.nav_file(i) end)
+end
