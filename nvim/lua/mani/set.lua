@@ -54,3 +54,6 @@ vim.cmd("autocmd BufLeave * silent! wall")
 
 -- set title for vim
 vim.opt.title = true
+
+-- set spelling check for tex
+vim.cmd("autocmd FileType tex,markdown setlocal spell")

@@ -4,6 +4,28 @@ snippet beg "begin" i
 \end{$1}
 endsnippet
 
+snippet item "item" i
+\item
+endsnippet
+
+snippet itemize "itemize" i
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+snippet enumerate "enumerate" i
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet align "align" i
+\begin{align*}
+	$0
+\end{align*}
+endsnippet
+
 snippet note "notes init" b
 \documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
@@ -11,6 +33,8 @@ snippet note "notes init" b
 \usepackage{amsfonts, amsmath, amsthm, amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
 \hypersetup{
 	colorlinks=true,
 	linkcolor=blue,
@@ -25,8 +49,8 @@ snippet note "notes init" b
 \usepackage[margin=1in]{geometry}
 \usepackage{xcolor}
 \newcounter{countCode}
-\lstnewenvironment{code} [1][caption=Ponme caption, label=default]{%
-	\renewcommand*{\lstlistingname}{Listado}
+\lstnewenvironment{code} [1][caption=Captions, label=default]{%
+	\renewcommand*{\lstlistingname}{Code}
 	\setcounter{lstlisting}{\value{countCode}}
 	\lstset{ %
 		language=java,
