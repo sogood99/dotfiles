@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-neofetch
+~/dotfiles/neofetch-edited --color_blocks off
 
 # If not running interactively, don't do anything
 case $- in
@@ -100,9 +100,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='ls -avlF'
+alias la='ls -vA'
+alias l='ls -vCF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -147,7 +147,7 @@ export NVM_DIR="$HOME/.nvm"
 alias nv="nvim"
 
 # alias for spotify player
-alias sp="~/.cargo/bin/spotify_player --theme 'new-default'"
+alias sp="spotify_player --theme 'new-default'"
 
 # alias for osu!
 alias osu="cd ~/opt/osu/; dotnet run --project osu.Desktop;"
