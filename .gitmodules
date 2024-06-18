@@ -1,0 +1,3 @@
+[submodule "mouseless/repo"]
+	path = mouseless/repo
+	url = https://github.com/jbensmann/mouseless/

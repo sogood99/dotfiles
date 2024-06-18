@@ -82,7 +82,7 @@ bar {
 	font pango:Inconsolata 10
 	position bottom
 	tray_output none
-	status_command ~/opt/bumblebee-status/bumblebee-status -m sensors arandr brightness disk:root playerctl layout battery datetime  \
+	status_command ~/opt/bumblebee-status/bumblebee-status -m sensors brightness disk:root playerctl layout battery datetime  \
 		-t dracula-powerline
 }
 
@@ -272,7 +272,9 @@ exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpaper.jpg
 exec_always --no-startup-id dunst
 exec --no-startup-id udiskie
 exec --no-startup-id fcitx5
-exec_always --no-startup-id setxkbmap -option caps:escape
+# exec_always --no-startup-id setxkbmap -option caps:escape
+exec_always --no-startup-id sudo ~/.config/dotfiles/mouseless/mouseless --config ~/.config/dotfiles/mouseless/config.yaml
+
 exec_always --no-startup-id picom --backend xrender --vsync --config /dev/null --fade-in-step=1 --fade-out-step=1 --fade-delta=0
 
 exec --no-startup-id i3-msg 'workspace 1; exec alacritty -e tmux; exec sleep 2; workspace 2; exec firefox'
