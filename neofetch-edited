@@ -1,4 +1,4 @@
-#!/nix/store/8fv91097mbh5049i9rglc73dx6kjg3qk-bash-5.2-p15/bin/bash
+#!/usr/bin/env bash
 # vim: noai:ts=4:sw=4:expandtab
 # shellcheck source=/dev/null
 # shellcheck disable=2009
@@ -46,7 +46,7 @@ LC_ALL=C
 LANG=C
 
 # Fix issues with gsettings.
-[[ -z $GIO_EXTRA_MODULES ]] && export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
+export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
 
 # Neofetch default config.
 read -rd '' config <<'EOF'
@@ -999,13 +999,6 @@ get_distro() {
                     *) distro="OS Elbrus $(< /etc/mcst_version)"
                 esac
 
-            elif [[ -f /etc/NIXOS ]]; then
-                case $distro_shorthand in
-                    on) distro="NixOS $(nixos-version | awk '{print substr($1,0,5),$2}')" ;;
-                    tiny) distro="NixOS" ;;
-                    *) distro="NixOS $(nixos-version)" ;;
-                esac
-
             elif type -p pveversion >/dev/null; then
                 case $distro_shorthand in
                     on|tiny) distro="Proxmox VE" ;;
@@ -1576,6 +1569,8 @@ get_packages() {
             # Using the dnf package cache is much faster than rpm.
             if has dnf && type -p sqlite3 >/dev/null && [[ -f /var/cache/dnf/packages.db ]]; then
                 pac "$(sqlite3 /var/cache/dnf/packages.db "SELECT count(pkg) FROM installed")"
+            else
+                has rpm && tot rpm -qa
             fi
 
             # 'mine' conflicts with minesweeper games.
@@ -3987,13 +3982,13 @@ get_cols() {
         printf -v block_spaces "%${block_height}s"
 
         # Convert the spaces into rows of blocks.
-        [[ "$blocks"  ]] && cols+="${block_spaces// /${blocks}[mnl}"
-        [[ "$blocks2" ]] && cols+="${block_spaces// /${blocks2}[mnl}"
+        [[ "$blocks"  ]] && cols+="${block_spaces// /${blocks}[mnl}"
+        [[ "$blocks2" ]] && cols+="${block_spaces// /${blocks2}[mnl}"
 
         # Add newlines to the string.
         cols=${cols%%nl}
         cols=${cols//nl/
-[${text_padding}C${zws}}
+[${text_padding}C${zws}}
 
         # Add block height to info height.
         ((info_height+=block_range[1]>7?block_height+2:block_height+1))
@@ -8956,34 +8951,25 @@ EOF
         "nixos_old"*)
             set_colors 4 6
             read -rd '' ascii_data <<'EOF'
-${c1}              ____       ${c2}_______        ____
-${c1}             /####\      ${c2}\######\      /####\
-${c1}             ######\      ${c2}\######\    /#####/
-${c1}             \######\      ${c2}\######\  /#####/
-${c1}              \######\      ${c2}\######\/#####/    ${c1}/\
-${c1}               \######\      ${c2}\###########/    ${c1}/##\
-${c1}        ________\######\______${c2}\#########/    ${c1}/####\
-${c1}       /#######################${c2}\#######/    ${c1}/######
-${c1}      /#########################${c2}\######\   ${c1}/######/
-${c1}     /###########################${c2}\######\ ${c1}/######/
-${c1}     ¯¯¯¯¯¯¯¯¯¯¯¯${c2}/######/${c1}¯¯¯¯¯¯¯¯¯${c2}\######${c1}/######/
-${c2}                /######/           ${c2}\####${c1}/######/________
-${c2}  _____________/######/             ${c2}\##${c1}/################\
-${c2} /###################/               ${c2}\${c1}/##################\
-${c2} \##################/${c1}\               /###################/
-${c2}  \################/${c1}##\             /######/¯¯¯¯¯¯¯¯¯¯¯¯¯
-${c2}   ¯¯¯¯¯¯¯¯/######/${c1}####\           /######/
-${c2}          /######/${c1}######\${c2}_________${c1}/######/${c2}____________
-${c2}         /######/ ${c1}\######\${c2}###########################/
-${c2}        /######/   ${c1}\######\${c2}#########################/
-${c2}        ######/    ${c1}/#######\${c2}#######################/
-${c2}        \####/    ${c1}/#########\${c2}¯¯¯¯¯¯\######\¯¯¯¯¯¯¯¯
-${c2}         \##/    ${c1}/###########\${c2}      \######\
-${c2}          \/    ${c1}/#####/\######\${c2}      \######\
-${c1}               ${c1}/#####/  \######\${c2}      \######\
-${c1}              ${c1}/#####/    \######\${c2}      \######
-${c1}              ${c1}\####/      \######\${c2}      \####/
-${c1}               ${c1}¯¯¯¯        ¯¯¯¯¯¯¯${c2}       ¯¯¯¯
+${c1}          ::::.    ${c2}':::::     ::::'
+${c1}          ':::::    ${c2}':::::.  ::::'
+${c1}            :::::     ${c2}'::::.:::::
+${c1}      .......:::::..... ${c2}::::::::
+${c1}     ::::::::::::::::::. ${c2}::::::    ${c1}::::.
+    ::::::::::::::::::::: ${c2}:::::.  ${c1}.::::'
+${c2}           .....           ::::' ${c1}:::::'
+${c2}          :::::            '::' ${c1}:::::'
+${c2} ........:::::               ' ${c1}:::::::::::.
+${c2}:::::::::::::                 ${c1}:::::::::::::
+${c2} ::::::::::: ${c1}..              ${c1}:::::
+${c2}     .::::: ${c1}.:::            ${c1}:::::
+${c2}    .:::::  ${c1}:::::          ${c1}'''''    ${c2}.....
+    :::::   ${c1}':::::.  ${c2}......:::::::::::::'
+     :::     ${c1}::::::. ${c2}':::::::::::::::::'
+${c1}            .:::::::: ${c2}'::::::::::
+${c1}           .::::''::::.     ${c2}'::::.
+${c1}          .::::'   ::::.     ${c2}'::::.
+${c1}         .::::      ::::      ${c2}'::::.
 EOF
         ;;
 
