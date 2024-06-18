@@ -47,11 +47,11 @@ layers:
     u: scroll down
     y: scroll left
     o: scroll right
-    leftalt: speed 4.0
-    e: speed 0.3
-    w: speed 0.1
-    a: button left
+    e: speed 4.0
+    leftalt: speed 0.3
+    c: speed 0.1
+    d: button left
     s: button middle
-    d: button right
+    f: button right
     # move to the top left corner
     k0: "exec xdotool mousemove 0 0"
