@@ -1,3 +1,6 @@
 [submodule "mouseless/repo"]
 	path = mouseless/repo
 	url = https://github.com/jbensmann/mouseless/
+[submodule ".tmux/plugins/tmux"]
+	path = .tmux/plugins/tmux
+	url = https://github.com/dracula/tmux
