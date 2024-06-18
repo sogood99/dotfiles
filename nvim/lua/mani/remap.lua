@@ -58,40 +58,40 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- add to current word
 
 local function t(str)
-	-- Adjust boolean arguments as needed
-	return vim.api.nvim_replace_termcodes(str, true, true, true)
+    -- Adjust boolean arguments as needed
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 function MoveHorizontal(dir)
-	if vim.fn.winnr('l') ~= vim.fn.winnr() then
-		if dir == 0 then
-			vim.cmd.normal(t '<C-W><')
-		else
-			vim.cmd.normal(t '<C-W>>')
-		end
-	else
-		if dir == 0 then
-			vim.cmd.normal(t '<C-W>>')
-		else
-			vim.cmd.normal(t '<C-W><')
-		end
-	end
+    if vim.fn.winnr('l') ~= vim.fn.winnr() then
+        if dir == 0 then
+            vim.cmd.normal(t '<C-W><')
+        else
+            vim.cmd.normal(t '<C-W>>')
+        end
+    else
+        if dir == 0 then
+            vim.cmd.normal(t '<C-W>>')
+        else
+            vim.cmd.normal(t '<C-W><')
+        end
+    end
 end
 
 function MoveVertical(dir)
-	if (vim.fn.winnr('j') ~= vim.fn.winnr()) and (vim.fn.winnr('k') == vim.fn.winnr()) then
-		if dir == 0 then
-			vim.cmd.normal(t '<C-W>+')
-		else
-			vim.cmd.normal(t '<C-W>-')
-		end
-	else
-		if dir == 0 then
-			vim.cmd.normal(t '<C-W>-')
-		else
-			vim.cmd.normal(t '<C-W>+')
-		end
-	end
+    if (vim.fn.winnr('j') ~= vim.fn.winnr()) and (vim.fn.winnr('k') == vim.fn.winnr()) then
+        if dir == 0 then
+            vim.cmd.normal(t '<C-W>+')
+        else
+            vim.cmd.normal(t '<C-W>-')
+        end
+    else
+        if dir == 0 then
+            vim.cmd.normal(t '<C-W>-')
+        else
+            vim.cmd.normal(t '<C-W>+')
+        end
+    end
 end
 
 -- map F5-8 to move
@@ -103,3 +103,7 @@ vim.keymap.set({ "n", "t" }, "<F7>", function() MoveVertical(1) end)
 -- terminal mode
 -- vim.keymap.set("n", "<C-a>", "<C-w>s :term<CR>")
 -- vim.keymap.set("n", "<M-a>", "<C-w>v :term<CR>")
+
+-- map Ctrl-s to Ctrl-a in visual mode (increment)
+vim.keymap.set("v", "<C-s>", "<C-a>")
+vim.keymap.set("v", "g<C-s>", "g<C-a>")

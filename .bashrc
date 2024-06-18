@@ -166,22 +166,22 @@ export XMODIFIERS=@im=fcitx
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/mani/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/mani/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/mani/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/mani/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/mani/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/mani/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/mani/miniconda3/bin:$PATH"
+        export PATH="/home/mani/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-if [ -n "$CONDA_DEFAULT_ENV" ]; then                                                                                                                                         
-    __conda_reactivate                                                                                                                                                       
-fi
+#
+# if [ -n "$CONDA_DEFAULT_ENV" ]; then                                                                                                                                         
+#     __conda_reactivate                                                                                                                                                       
+# fi
 
 # for rubygems
 export PATH="/home/mani/.local/share/gem/ruby/3.0.0/bin:$PATH"
