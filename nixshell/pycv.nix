@@ -2,11 +2,9 @@
 { pkgs ? import <nixpkgs> {} }:
 let
   my-python-packages = ps: with ps; [
-      pyopengl
       numpy
-      sympy
       scipy
-      black
+      opencv4
       matplotlib
   ];
   my-python = pkgs.python3.withPackages my-python-packages;
