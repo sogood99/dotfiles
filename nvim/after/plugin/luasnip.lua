@@ -1,3 +1,3 @@
 local luasnip = require("luasnip.loaders.from_snipmate")
 
-luasnip.lazy_load({ paths = { "~/dotfiles/nvim/snippets" } })
+luasnip.lazy_load({ paths = { "~/.config/dotfiles/nvim/snippets" } })

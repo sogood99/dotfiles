@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-~/dotfiles/neofetch-edited --color_blocks off
+~/.config/dotfiles/neofetch-edited --color_blocks off
 
 # If not running interactively, don't do anything
 case $- in
