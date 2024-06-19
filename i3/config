@@ -265,8 +265,8 @@ bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 exec --no-startup-id xrandr --output $monitor_left --primary --mode 1600x900 --pos 0x0 --rotate normal 
 
 bindsym $mod+m exec --no-startup-id "xrandr --output 'eDP1' --primary --mode '1600x900' --pos '0x0' --rotate normal; feh --bg-scale ~/Pictures/Wallpaper.jpg"
-
 bindsym $mod+n exec --no-startup-id "xrandr --output 'eDP1' --primary --mode 1600x900 --pos 0x0 --rotate normal --output DP1 --off --output DP2 --off --output DP3 --mode 1920x1080 --pos 1600x0 --rotate normal --output VIRTUAL1 --off; feh --bg-scale '~/Pictures/Wallpaper.jpg'"
+exec_always --no-startup-id ~/.config/i3/scripts/startup.sh
 
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpaper.jpg
 exec_always --no-startup-id dunst
