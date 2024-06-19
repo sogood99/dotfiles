@@ -2,14 +2,13 @@
 
 Repo for my dotfiles.
 
-## Neovim
+## Requirements
 
-```
-ln -s ./nvim ~/.config/nvim
-```
+Requires installation of [Golang](https://go.dev).
 
-# Hyprland
+## Installation
 
+Install simply using 
 ```
-ln -s ./hypr ~/.config/hypr
+sh install.sh
 ```
