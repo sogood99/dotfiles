@@ -49,7 +49,7 @@ layers:
     u: scroll down
     y: scroll left
     o: scroll right
-    e: speed 4.0
+    w: speed 4.0
     leftalt: speed 0.3
     c: speed 0.1
     d: button left
