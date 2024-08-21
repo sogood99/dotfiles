@@ -90,6 +90,7 @@ bar {
 assign [class="Spotify"] $ws5
 assign [class="discord"] $ws5
 assign [class="Slack"] $ws5
+assign [class="osu!"] $ws4
 
 # set default terminal
 # set $term i3-sensible-terminal
