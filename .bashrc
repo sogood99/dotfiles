@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-~/.config/dotfiles/neofetch-edited --color_blocks off
+fastfetch
 
 # If not running interactively, don't do anything
 case $- in
