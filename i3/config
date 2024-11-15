@@ -280,5 +280,7 @@ exec_always --no-startup-id picom --backend xrender --vsync --config /dev/null -
 
 exec --no-startup-id i3-msg 'workspace 1; exec alacritty -e tmux; exec sleep 2; workspace 2; exec firefox'
 
+exec redshift -l 13.64:-107.9 -b 1:0.7
+
 # screenshot
 bindsym Print exec --no-startup-id maim -s --format=png "$HOME/Pictures/Screenshots/screenshot-$(date -u +'%Y%m%d-%H%M%SZ').png"
