@@ -1,3 +1,3 @@
 require("mani.remap")
-require("mani.packer")
+require("mani.lazy")
 require("mani.set")
