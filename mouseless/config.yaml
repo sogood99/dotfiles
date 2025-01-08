@@ -29,7 +29,7 @@ layers:
 - name: initial
   bindings:
     # when tab is held and another key pressed, activate mouse layer
-    tab: tap-hold-next tab ; toggle-layer mouse ; 500
+    tab: tap-hold-next tab ; toggle-layer mouse ; 200
     # switch escape with capslock
     esc: capslock
     capslock: esc
