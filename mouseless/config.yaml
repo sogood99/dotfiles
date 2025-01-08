@@ -59,3 +59,5 @@ layers:
     f: button right
     # move to the top left corner
     k0: "exec xdotool mousemove 0 0"
+    esc: capslock
+    capslock: esc
