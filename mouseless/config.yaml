@@ -40,6 +40,8 @@ layers:
   bindings:
     # quit mouse layer
     e: layer initial
+    # tab
+    q: tab
     # keep the mouse layer active
     space: layer mouse
     r: reload-config
