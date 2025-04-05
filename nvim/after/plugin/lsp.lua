@@ -29,6 +29,20 @@ cmp.setup({
     },
     snippets = {
         preset = "luasnip", -- Choose LuaSnip as the snippet engine
+    },
+    fuzzy = {
+        sorts = {
+            -- (optionally) always prioritize exact matches
+            -- 'exact',
+
+            -- pass a function for custom behavior
+            -- function(item_a, item_b)
+            --   return item_a.score > item_b.score
+            -- end,
+
+            'score',
+            'sort_text',
+        }
     }
 })
 
