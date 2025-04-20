@@ -57,3 +57,5 @@ vim.opt.title = true
 
 -- set spelling check for tex
 vim.cmd("autocmd FileType tex,markdown setlocal spell")
+
+vim.o.virtualedit = "block"
