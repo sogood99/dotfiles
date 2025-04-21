@@ -87,7 +87,7 @@ end
 vim.lsp.enable("clangd")
 vim.lsp.config.clangd = {
     cmd = { "clangd" },
-    filetypes = { 'cpp' },
+    filetypes = { 'cpp', 'cuda' },
     on_attach = on_attach,
 }
 vim.lsp.enable("luals")
