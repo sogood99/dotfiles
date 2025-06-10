@@ -84,6 +84,10 @@ bar {
 	tray_output none
 	status_command ~/opt/bumblebee-status/bumblebee-status -m sensors brightness disk:root playerctl layout battery datetime  \
 		-t dracula-powerline
+
+    colors {
+        background #282a36
+    }
 }
 
 # default workspaces
@@ -259,7 +263,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec --no-startup-id python ~/.config/i3/scripts/interface.py --interface brightness --add
 bindsym XF86MonBrightnessDown exec --no-startup-id python ~/.config/i3/scripts/interface.py --interface brightness --sub
 
-# i3lock 
+# i3lockd 
 bindsym $mod+x exec i3lock --color 475263
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
