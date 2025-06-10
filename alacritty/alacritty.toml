@@ -1,7 +1,6 @@
-import = ["/home/mani/.config/alacritty/themes/themes/gotham.toml"]
 
 [font]
-size = 9.5
+size = 10.0
 
 [font.bold]
 family = "Fira Code"
@@ -80,3 +79,6 @@ mods = "Control|Shift"
 [window]
 dynamic_title = true
 opacity = 0.95
+
+[general]
+import = ["/home/mani/.config/alacritty/themes/themes/gotham.toml"]

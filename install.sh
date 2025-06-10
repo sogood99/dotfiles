@@ -56,12 +56,17 @@ echo Linked $dotfiles_dir/spotify-player to $config_dir/spotify-player
 ln -sfn $dotfiles_dir/i3 $config_dir/i3
 echo Linked $dotfiles_dir/i3 to $config_dir/i3
 
-# i3 config
+# alacritty config
 ln -sfn $dotfiles_dir/alacritty $config_dir/alacritty
 echo Linked $dotfiles_dir/alacritty to $config_dir/alacritty
 
 # link zathura
+mkdir -p $config_dir/zathura
 ln -sfn $dotfiles_dir/zathurarc $config_dir/zathura/zathurarc
 echo Linked $dotfiles_dir/zathurarc $config_dir/zathura/
+
+# rofi configs
+ln -sfn $dotfiles_dir/rofi $config_dir/rofi
+echo Linked $dotfiles_dir/rofi $config_dir/rofi
 
 echo Success
