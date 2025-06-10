@@ -123,8 +123,8 @@ bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec rofi -show drun -show-icons
-bindsym $mod++Shift+d exec rofi -show window -show-icons
+bindsym $mod+d exec rofi -show drun -show-icons -display-drun ""
+bindsym $mod++Shift+d exec rofi -show window -show-icons -display-window ""
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
