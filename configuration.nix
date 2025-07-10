@@ -316,8 +316,8 @@ in {
   i18n.inputMethod = {
     # enabled = "ibus";
     # ibus.engines = with pkgs.ibus-engines; [ mozc libpinyin rime ];
-    enabled = true;
     type = "fcitx5";
+    enable = true;
     fcitx5.addons = with pkgs; [
         fcitx5-mozc
         fcitx5-chinese-addons
