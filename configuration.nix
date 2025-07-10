@@ -216,11 +216,7 @@ in {
       slack
       nmap
       obs-studio
-#      (python310.withPackages (p: with p; [
-#			      pip
-#			      setuptools
-#			      autopep8 
-#      ]))
+      python310
       xclip
       bluez
       valgrind
