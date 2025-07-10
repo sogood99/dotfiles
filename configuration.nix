@@ -2,17 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }: 
+{ config, pkgs, callPackage, ... }: 
 
 let 
-  unstable-pkgs = import <nixpkgs-unstable> { config = { allowUnfree = true; }; };
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; }; 
 in {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware-configuration.nix 
     ];
-
-
+  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -48,17 +47,19 @@ in {
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.defaultSession = "none+i3";
 
   # Enable the X11 windowing system.
   # Configure keymap in X11
   services.xserver = {
     enable = true;
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
 
     # i3
-    autorun = false;
-    displayManager.defaultSession = "none+i3";
+    autorun = true;
     desktopManager.xterm.enable = false; 
     displayManager.lightdm.enable = true;
     windowManager.i3 = {
@@ -82,25 +83,16 @@ in {
 	xdg-utils # for opening default programs when clicking links
 	glib # gsettings
 	dracula-theme # gtk theme
-	gnome3.adwaita-icon-theme  # default gnome cursors
+	adwaita-icon-theme  # default gnome cursors
 	viewnior 
-	gnome.nautilus
+	nautilus
 	wacomtablet
+	udiskie
+	redshift # night redshift
+	pulseaudioFull
      ];
     };
 
-    # Enable touchpad support (enabled default in most desktopManager).
-    libinput = {
-      enable = true;
-
-      touchpad = {
-      	tapping = true;
-	naturalScrolling = true;
-	scrollMethod = "twofinger";
-	disableWhileTyping = false;
-	clickMethod = "clickfinger";
-      };
-    };
 
     videoDrivers = [ "intel" ]; 
     deviceSection = ''
@@ -109,16 +101,30 @@ in {
     '';
   };
 
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.libinput = {
+    enable = true;
+
+    touchpad = {
+      tapping = true;
+      naturalScrolling = true;
+      scrollMethod = "twofinger";
+      disableWhileTyping = false;
+      clickMethod = "clickfinger";
+    };
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true; 
   services.printing.drivers = [ pkgs.brlaser ];
   services.avahi.enable = true; # runs the Avahi daemon
-  services.avahi.nssmdns = true; # enables the mDNS NSS plug-in
+  services.avahi.nssmdns4 = true; # enables the mDNS NSS plug-in
   services.avahi.openFirewall = true; # opens the firewall for UDP port 5353
 
   # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  # sound.enable = true;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -152,23 +158,22 @@ in {
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      neofetch
+      fastfetch
       nodejs_20
       vscodium
       discord
       spotify
-      unstable-pkgs.spotify-player
+      unstable.spotify-player
       ranger
       gcc
       clang_16
       clang-tools_16
       lld_16
       llvmPackages_16.libllvm
-      sage
-      haskell.compiler.ghc961
+      haskell.compiler.ghc964
       rustup
-      dotnet-sdk_6
-      osu-lazer-bin
+      dotnet-sdk
+      unstable.osu-lazer-bin
       texlive.combined.scheme-full
       jdk
       krita
@@ -178,7 +183,6 @@ in {
       libreoffice-qt
       hunspell
       hunspellDicts.en_US-large
-      qemu_full
       yt-dlp
       gnumake
       cmake
@@ -187,6 +191,7 @@ in {
       ruby
       bundix
       bundler
+      rubyPackages.jekyll
       (agda.withPackages (p: with p; [
 	standard-library
       ]))
@@ -197,7 +202,7 @@ in {
       ripgrep
       unzip
       lua-language-server
-      rnix-lsp
+      # rnix-lsp
       haskell-language-server
       jdt-language-server
       marksman
@@ -211,19 +216,31 @@ in {
       slack
       nmap
       obs-studio
-      (python39.withPackages (p: with p; [
-			      pip
-			      setuptools
-			      autopep8 
-			      tkinter
-			      numpy
-			      scipy
-			      matplotlib
-      ]))
+#      (python310.withPackages (p: with p; [
+#			      pip
+#			      setuptools
+#			      autopep8 
+#      ]))
       xclip
       bluez
       valgrind
       vlc
+      barrier
+      nasm
+      gdb
+      jetbrains.idea-ultimate
+      qemu_full
+      wasm-pack
+      xorg.libXxf86vm
+      unstable.vscode
+      kazam
+      go
+      gopls
+      godot_4
+      filezilla
+      zig
+      zls # zig language server
+      inkscape
     ];
   };
 
@@ -234,7 +251,7 @@ in {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim_configurable
-    neovim
+    unstable.neovim
     tmux
     wget
     git
@@ -265,10 +282,10 @@ in {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 # For CN and JP fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
 	corefonts
 	ubuntu_font_family
 	powerline
@@ -291,45 +308,51 @@ in {
 	mplus-outline-fonts.githubRelease
 	dina-font
 	proggyfonts
-	nerdfonts
+	nerd-fonts.monaspace
 	terminus_font
   ];
 
   # For CN and JP input
-  # i18n.inputMethod = {
+  i18n.inputMethod = {
     # enabled = "ibus";
     # ibus.engines = with pkgs.ibus-engines; [ mozc libpinyin rime ];
-    # enabled = "fcitx5";
-    # fcitx5.addons = with pkgs; [
-        # fcitx5-mozc
-        # fcitx5-chinese-addons
-        # fcitx5-gtk
-    # ];
-  # };
+    enabled = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-chinese-addons
+        fcitx5-gtk
+    ];
+  };
 
   # Sudo doesnt need password
   security.sudo.wheelNeedsPassword = false;
 
   # Map Caps Lock to Esc
-  services.xserver.xkbOptions = "caps:escape";
+  # services.xserver.xkbOptions = "caps:escape";
   console.useXkbConfig = true;
 
   programs.java.enable = true;
 
   # Enable OpenTabletDriver
-  # hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver.enable = true;
 
   services.xserver.wacom.enable = true;
 
-  hardware.opengl = {
+  hardware.graphics = {
      enable = true;
      extraPackages = with pkgs; [
        libGL
        glade
      ];
-     setLdLibraryPath = true;
    };
+
+   services.udisks2.enable = true;
 
   programs.dconf.enable = true;
 
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 }
