@@ -84,23 +84,19 @@ local function on_attach(client, bufnr)
 end
 
 
-vim.lsp.enable("clangd")
-vim.lsp.config.clangd = {
-    cmd = { "clangd" },
-    filetypes = { 'cpp', 'cuda' },
+vim.lsp.config("clangd", {
+    filetypes = { "cpp", "cuda" },
     on_attach = on_attach,
-}
-vim.lsp.enable("luals")
-vim.lsp.config.luals = {
-    cmd = { 'lua-language-server' },
-    filetypes = { 'lua' },
-    root_markers = { '.luarc.json', '.luarc.jsonc' },
+})
+
+vim.lsp.config("lua_ls", {
     on_attach = on_attach,
-}
-vim.lsp.enable("rustls")
-vim.lsp.config.rustls = {
-    cmd = { 'rust-analyzer' },
-    filetypes = { 'rust' },
-    root_markers = { 'Cargo.toml' },
+})
+
+vim.lsp.config("rust_analyzer", {
     on_attach = on_attach,
-}
+})
+
+vim.lsp.config("pylsp", {
+    on_attach = on_attach
+})

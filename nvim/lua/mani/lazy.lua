@@ -85,11 +85,24 @@ lazy.setup({
         dependencies = { "nvim-tree/nvim-web-devicons" }
     },
 
+    -- LSP configs
+
+    { 'neovim/nvim-lspconfig' },
+
     -- Optional: auto install language servers
     {
         "williamboman/mason.nvim",
         build = ":MasonUpdate",
         config = true,
+    },
+
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = { "williamboman/mason.nvim" },
+        opts = {
+            ensure_installed = { "clangd", "lua_ls", "rust_analyzer" },
+            automatic_enable = true,
+        },
     },
 
     -- status bar
