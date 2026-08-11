@@ -82,8 +82,8 @@ local function on_attach(client, bufnr)
         vim.diagnostic.jump({ count = 1, float = true })
     end, opts)
     vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-    vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>r", vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>a', vim.lsp.buf.rename, { desc = 'LSP rename' })
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end
 
@@ -101,6 +101,6 @@ vim.lsp.config("rust_analyzer", {
     on_attach = on_attach,
 })
 
-vim.lsp.config("pylsp", {
+vim.lsp.config("pyright", {
     on_attach = on_attach
 })
