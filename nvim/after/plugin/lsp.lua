@@ -89,7 +89,7 @@ end
 
 
 vim.lsp.config("clangd", {
-    filetypes = { "cpp", "cuda" },
+    filetypes = { "c", "cpp", "cuda" },
     on_attach = on_attach,
 })
 
