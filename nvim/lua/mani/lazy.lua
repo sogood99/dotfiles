@@ -45,14 +45,6 @@ lazy.setup({
         "nvim-treesitter/nvim-treesitter-textobjects",
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
     },
-    {
-        "nvim-treesitter/nvim-treesitter-refactor",
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    },
-    {
-        'nvim-treesitter/playground',
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    },
 
     -- useful plugins
     { 'ThePrimeagen/harpoon' },
