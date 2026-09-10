@@ -66,6 +66,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 local function on_attach(client, bufnr)
     local opts = { buffer = bufnr }
+    local diag_float = {
+        close_events = { "CursorMoved", "CursorMovedI", "InsertCharPre", "BufLeave", "WinLeave" },
+    }
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "H", function()
@@ -76,10 +79,10 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
     vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
     vim.keymap.set("n", "[g", function()
-        vim.diagnostic.jump({ count = -1, float = true })
+        vim.diagnostic.jump({ count = -1, float = diag_float })
     end, opts)
     vim.keymap.set("n", "]g", function()
-        vim.diagnostic.jump({ count = 1, float = true })
+        vim.diagnostic.jump({ count = 1, float = diag_float })
     end, opts)
     vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.references, opts)
