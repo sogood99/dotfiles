@@ -3,7 +3,9 @@ local conform = require("conform")
 conform.setup({
     formatters_by_ft = {
         python = { "black" },
-        lua = { "stylua" }
+        lua = { "stylua" },
+        sh = { "shfmt" },
+        bash = { "shfmt" }
     },
 
     format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
