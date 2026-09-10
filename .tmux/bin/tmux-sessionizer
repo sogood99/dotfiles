@@ -2,8 +2,6 @@
 
 # Fuzzy pick a project
 
-export PATH="$HOME/.local/bin:$PATH"
-
 if [[ $# -eq 1 ]]; then
     selected="$1"
 else
@@ -18,8 +16,8 @@ fi
 name="$(basename "$selected" | tr '.:' '__')"
 tmux has-session -t="$name" 2>/dev/null || tmux new-session -ds "$name" -c "$selected"
 
-if [[ -n "${TMUX:-}"]]; then
+if [[ -n "${TMUX:-}" ]]; then
     tmux switch-client -t "$name"
 else
     tmux attach -t "$name"
-end
+fi
