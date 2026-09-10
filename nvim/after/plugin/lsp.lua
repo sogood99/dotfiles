@@ -51,25 +51,15 @@ cmp.setup({
     }
 })
 
--- format on save
-vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("lsp", { clear = true }),
-    callback = function(args)
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = args.buf,
-            callback = function()
-                vim.lsp.buf.format { async = false, id = args.data.client_id }
-            end,
-        })
-    end
-})
+vim.diagnostic.config({ virtual_lines = { current_line = true }, severity_sort = true })
+
+local function diag_jmp(count)
+    vim.diagnostic.jump({ count = count })
+end
+
 
 local function on_attach(client, bufnr)
     local opts = { buffer = bufnr }
-    local diag_float = {
-        close_events = { "CursorMoved", "CursorMovedI", "InsertCharPre", "BufLeave", "WinLeave" },
-    }
-
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "H", function()
         vim.lsp.buf.hover({
@@ -78,12 +68,8 @@ local function on_attach(client, bufnr)
     end, opts)
     vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
     vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-    vim.keymap.set("n", "[g", function()
-        vim.diagnostic.jump({ count = -1, float = diag_float })
-    end, opts)
-    vim.keymap.set("n", "]g", function()
-        vim.diagnostic.jump({ count = 1, float = diag_float })
-    end, opts)
+    vim.keymap.set("n", "[g", function() diag_jmp(-1) end, opts)
+    vim.keymap.set("n", "]g", function() diag_jmp(1) end, opts)
     vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<leader>a', vim.lsp.buf.rename, { desc = 'LSP rename' })
@@ -97,6 +83,12 @@ vim.lsp.config("clangd", {
 })
 
 vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            runtime = { version = "LuaJIT" },
+            workspace = { checkThirdParty = false }
+        }
+    },
     on_attach = on_attach,
 })
 
@@ -105,5 +97,23 @@ vim.lsp.config("rust_analyzer", {
 })
 
 vim.lsp.config("pyright", {
+    on_attach = on_attach
+})
+
+vim.lsp.config("kotlin_lsp", {
+    cmd = { 'kotlin-lsp', '--stdio' },
+    filetypes = { 'kotlin', 'kt', 'kts' },
+    on_attach = on_attach
+})
+
+vim.lsp.config("jtdls", {
+    cmd = { 'jdtls' },
+    filetypes = { 'java' },
+    on_attach = on_attach
+})
+
+vim.lsp.config("vtsls", {
+    cmd = { 'vtsls', '--stdio' },
+    filetypes = { "typescipt" },
     on_attach = on_attach
 })

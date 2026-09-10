@@ -59,3 +59,5 @@ vim.opt.title = true
 vim.cmd("autocmd FileType tex,markdown setlocal spell")
 
 vim.o.virtualedit = "block"
+
+vim.opt.inccommand = "split"

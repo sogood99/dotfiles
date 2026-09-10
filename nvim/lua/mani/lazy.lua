@@ -30,7 +30,9 @@ lazy.setup({
     -- telescope
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' },
+        dependencies = { 'nvim-lua/plenary.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+        },
     },
 
     -- nvim theme
@@ -44,6 +46,9 @@ lazy.setup({
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-context'
     },
 
     -- useful plugins
@@ -98,7 +103,7 @@ lazy.setup({
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
         opts = {
-            ensure_installed = { "clangd", "lua_ls", "rust_analyzer" },
+            ensure_installed = { "clangd", "lua_ls", "rust_analyzer", "pyright", "vtsls", "jdtls" },
             automatic_enable = true,
         },
     },
@@ -114,7 +119,6 @@ lazy.setup({
 
     -- snippets
     { 'SirVer/ultisnips' },
-    { "L3MON4D3/LuaSnip" },
 
     -- commenting
     { 'numToStr/Comment.nvim' },
@@ -134,4 +138,13 @@ lazy.setup({
         'kevinhwang91/nvim-ufo',
         dependencies = { 'kevinhwang91/promise-async' },
     },
+
+    -- formatting
+    { 'stevearc/conform.nvim' },
+
+    -- surround
+    { 'kylechui/nvim-surround', version = '*' },
+
+    -- git gutter
+    { 'lewis6991/gitsigns.nvim' },
 })
