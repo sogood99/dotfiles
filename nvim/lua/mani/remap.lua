@@ -57,56 +57,47 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- add to current word
 
-local function t(str)
-	-- Adjust boolean arguments as needed
-	return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
+local function move_divider_left()
+	local cur = vim.fn.winnr()
 
-function MoveHorizontal(dir)
+	if vim.fn.winnr("h") ~= cur then
+		vim.cmd("wincmd h")
+		vim.cmd("vertical resize -5")
+		vim.cmd(cur .. "wincmd w")
+	else
+		vim.cmd("vertical resize -5")
+	end
+end
+local function move_divider_right()
 	if vim.fn.winnr("l") ~= vim.fn.winnr() then
-		if dir == 0 then
-			vim.cmd.normal(t("<C-W><"))
-		else
-			vim.cmd.normal(t("<C-W>>"))
-		end
+		vim.cmd("vertical resize +5")
 	else
-		if dir == 0 then
-			vim.cmd.normal(t("<C-W>>"))
-		else
-			vim.cmd.normal(t("<C-W><"))
-		end
+		vim.cmd("vertical resize -5")
+	end
+end
+local function move_divider_up()
+	local cur = vim.fn.winnr()
+	if vim.fn.winnr("k") ~= cur then
+		vim.cmd("wincmd k")
+		vim.cmd("resize -3")
+
+		vim.cmd(cur .. "wincmd w")
+	else
+		vim.cmd("resize -3")
+	end
+end
+local function move_divider_down()
+	if vim.fn.winnr("j") ~= vim.fn.winnr() then
+		vim.cmd("resize +3")
+	else
+		vim.cmd("resize -3")
 	end
 end
 
-function MoveVertical(dir)
-	if (vim.fn.winnr("j") ~= vim.fn.winnr()) and (vim.fn.winnr("k") == vim.fn.winnr()) then
-		if dir == 0 then
-			vim.cmd.normal(t("<C-W>+"))
-		else
-			vim.cmd.normal(t("<C-W>-"))
-		end
-	else
-		if dir == 0 then
-			vim.cmd.normal(t("<C-W>-"))
-		else
-			vim.cmd.normal(t("<C-W>+"))
-		end
-	end
-end
-
--- map F5-8 to move
-vim.keymap.set({ "n", "t" }, "<F5>", function()
-	MoveHorizontal(0)
-end)
-vim.keymap.set({ "n", "t" }, "<F8>", function()
-	MoveHorizontal(1)
-end)
-vim.keymap.set({ "n", "t" }, "<F6>", function()
-	MoveVertical(0)
-end)
-vim.keymap.set({ "n", "t" }, "<F7>", function()
-	MoveVertical(1)
-end)
+vim.keymap.set("n", "<C-w><C-y>", move_divider_left, { desc = "Grow left" })
+vim.keymap.set("n", "<C-w><C-o>", move_divider_right, { desc = "Grow right" })
+vim.keymap.set("n", "<C-w><C-u>", move_divider_down, { desc = "Grow down" })
+vim.keymap.set("n", "<C-w><C-i>", move_divider_up, { desc = "Grow up" })
 
 -- terminal mode
 -- vim.keymap.set("n", "<C-a>", "<C-w>s :term<CR>")
