@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Fuzzy pick a project
+
+export PATH="$HOME/.local/bin:$PATH"
+
+if [[ $# -eq 1 ]]; then
+    selected="$1"
+else
+    selected="$({
+        find "$HOME/GitHub/main" -mindepth 1 -maxdepth 1 -type d 2>/dev/null
+        find "$HOME/GitHub/sogood99" -mindepth 1 -maxdepth 1 -type d 2>/dev/null
+    } | sort -u | fzf --reverse --border --prompt='project> ')"
+fi
+
+[[ -z "$selected" ]] && exit 0
+
+name="$(basename "$selected" | tr '.:' '__')"
+tmux has-session -t="$name" 2>/dev/null || tmux new-session -ds "$name" -c "$selected"
+
+if [[ -n "${TMUX:-}"]]; then
+    tmux switch-client -t "$name"
+else
+    tmux attach -t "$name"
+end
