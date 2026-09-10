@@ -116,7 +116,7 @@ vim.lsp.config("jdtls", {
 
 vim.lsp.config("vtsls", {
 	cmd = { "vtsls", "--stdio" },
-	filetypes = { "typescipt" },
+	filetypes = { "typescript" },
 	on_attach = on_attach,
 })
 
