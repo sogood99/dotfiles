@@ -81,6 +81,12 @@ lazy.setup({
 
     { 'neovim/nvim-lspconfig' },
 
+    {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {},
+    },
+
     -- Optional: auto install language servers
     {
         "williamboman/mason.nvim",
